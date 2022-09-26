@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from './core';
 
 @Component({
   selector: '.root',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'vetsched';
+  constructor(private userService : UserService) {
+    this.userService.populate();
+  }
 }

@@ -29,20 +29,39 @@
           <use xlink:href="#backArrow"></use></svg
       ></a>
       <div class="formDesing" *ngIf="currentTab === 'signup'">
-        <div>
+        <div [formGroup]="signUpForm">
           <h3>Sign up</h3>
           <div class="form-group">
             <label for="">Select Type</label>
-            <select class="form-control">
-              <option value="1">Option 1</option>
-              <option value="1">Option 2</option>
-              <option value="1">Option 3</option>
-              <option value="1">Option 4</option>
+            <select
+              class="form-control"
+              formControlName="profileType"
+              [ngClass]="{
+                redBorder:
+                  signUpForm.controls['profileType'].invalid &&
+                  (signUpForm.controls['profileType'].dirty ||
+                  signUpForm.controls['profileType'].touched)
+              }"
+            >
+              <option value="">Select Type</option>
+              <option value="1">Service Provider</option>
+              <option value="2">Pet Lover</option>
             </select>
           </div>
           <div class="form-group formIcon">
             <label for="">Name</label>
-            <input class="form-control" type="text" placeholder="Enter Name" />
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Enter Name"
+              formControlName="firstName"
+              [ngClass]="{
+                redBorder:
+                  signUpForm.controls['firstName'].invalid &&
+                  (signUpForm.controls['firstName'].dirty ||
+                  signUpForm.controls['firstName'].touched)
+              }"
+            />
           </div>
           <div class="form-group formIcon">
             <label for="">Email</label>
@@ -50,6 +69,13 @@
               class="form-control"
               type="email"
               placeholder="Enter Email"
+              formControlName="email"
+              [ngClass]="{
+                redBorder:
+                  signUpForm.controls['email'].invalid &&
+                  (signUpForm.controls['email'].dirty ||
+                  signUpForm.controls['email'].touched)
+              }"
             />
           </div>
           <div class="form-group formIcon">
@@ -58,6 +84,7 @@
               class="form-control"
               type="text"
               placeholder="Enter Address"
+              formControlName="address"
             />
           </div>
           <div class="form-group formIcon">
@@ -66,6 +93,13 @@
               class="form-control"
               type="tel"
               placeholder="Enter Phone #"
+              formControlName="phone"
+              [ngClass]="{
+                redBorder:
+                  signUpForm.controls['phone'].invalid &&
+                  (signUpForm.controls['phone'].dirty ||
+                  signUpForm.controls['phone'].touched)
+              }"
             />
           </div>
           <div class="form-group formIcon">
@@ -74,6 +108,13 @@
               class="form-control"
               type="password"
               placeholder="Enter Password"
+              formControlName="password"
+              [ngClass]="{
+                redBorder:
+                  signUpForm.controls['password'].invalid &&
+                  (signUpForm.controls['password'].dirty ||
+                  signUpForm.controls['password'].touched)
+              }"
             />
           </div>
           <div class="form-group formIcon">
@@ -82,11 +123,18 @@
               class="form-control"
               type="password"
               placeholder="Enter Password"
+              formControlName="confirmPassword"
+              [ngClass]="{
+                redBorder:
+                  signUpForm.controls['confirmPassword'].invalid &&
+                  (signUpForm.controls['confirmPassword'].dirty ||
+                  signUpForm.controls['confirmPassword'].touched)
+              }"
             />
           </div>
           <br />
           <div class="text-center">
-            <a class="myBtn" (click)="signup()">Sign up</a>
+            <a class="myBtn" (click)="signup()" id="signupBtn">Sign up</a>
             <p>
               Already have an account? <a [routerLink]="['/login']">Sign in</a>
             </p>

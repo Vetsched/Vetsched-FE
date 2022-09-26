@@ -8,6 +8,7 @@ import { User } from '../models';
 import { map, distinctUntilChanged } from 'rxjs/operators';
 import { HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class UserService {
@@ -26,18 +27,32 @@ export class UserService {
     private apiService: ApiService,
     private http: HttpClient,
     private jwtService: JwtService,
-    private router: Router
+    private router: Router,
+    private toaster: ToastrService,
   ) {}
 
+  addToast(type = '', title = '', description = ''): void {
+    if (type === 'success') {
+      this.toaster.success(description, title);
+    } else if (type === 'error') {
+      this.toaster.error(description, title);
+    } else if (type === 'warning') {
+      this.toaster.warning(description, title);
+    } else if (type === 'info') {
+      this.toaster.info(description, title);
+    } else {
+      this.toaster.info(description, title);
+    }
+  }
   // Verify JWT in localstorage with server & load user's info.
   // This runs once on application startup.
   populate() {
     // If JWT detected, attempt to get & store user's info
     if (
       this.jwtService.getToken() ||
-      typeof this.jwtService.getToken !== 'undefined'
+      typeof this.jwtService.getToken() !== 'undefined'
     ) {
-      this.apiService.get('/user').subscribe(
+      this.apiService.get('/Identity/AuthPing').subscribe(
         (data) => this.setAuth(data.user),
         (err) => this.purgeAuth()
       );
@@ -100,7 +115,7 @@ export class UserService {
 
   attemptAuth(type: string, credentials: any): Observable<User> {
     const route = type === 'login' ? '/login' : '';
-    return this.apiService.post('/users' + route, { user: credentials }).pipe(
+    return this.apiService.post('/Identity' + route, { user: credentials }).pipe(
       map((data) => {
         console.log(data, 'fsdafdsfds');
         this.setAuth(data.user);
@@ -111,5 +126,10 @@ export class UserService {
 
   getCurrentUser(): User {
     return this.currentUserSubject.value;
+  }
+
+  // signup call...
+  signup(postData: any): Observable<any> {
+    return this.apiService.post('/Identity/SignUp', postData);
   }
 }
