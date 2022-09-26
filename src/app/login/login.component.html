@@ -23,6 +23,7 @@
                 class="form-control"
                 type="text"
                 placeholder="Enter Email"
+                formControlName="email"
               />
             </div>
             <div class="form-group formIcon">
@@ -31,6 +32,7 @@
                 class="form-control"
                 type="password"
                 placeholder="Enter Password"
+                formControlName="password"
               />
               <!-- <div class="icon">
                                   <svg viewBox="0 0 18.697 16.36">
@@ -49,7 +51,7 @@
             <br /><br />
 
             <div class="text-center">
-              <a class="myBtn">Sign In</a>
+              <button class="myBtn" [disabled]="isSubmitting" (click)="submitForm()">Sign In</button>
               <p>
                 Don't have an account? <a [routerLink]="['/signup']">Sign Up</a>
               </p>

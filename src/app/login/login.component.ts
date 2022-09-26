@@ -22,8 +22,8 @@ export class LoginComponent implements OnInit {
   ) { 
     this.authForm = this.fb.group({
       'email': ['', Validators.required],
-      // 'password': ['', Validators.required, ],
-      'password': ['', [Validators.required, Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*-_=+\\|:;',.\<>/?~])[A-Za-z\d!@#$%^&*-_=+\\|:;',.\<>/?~].{7,}$")]]
+      'password': ['', Validators.required, ],
+      // 'password': ['', [Validators.required, Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*-_=+\\|:;',.\<>/?~])[A-Za-z\d!@#$%^&*-_=+\\|:;',.\<>/?~].{7,}$")]]
     });
   }
 
@@ -34,11 +34,11 @@ export class LoginComponent implements OnInit {
   submitForm() {
     this.isSubmitting = true;
     this.errors = {errors: {}};
-    delete this.authForm.value.password1;
+    const credentials = {...this.authForm.value};
+    this.authForm.patchValue({
+      password : ''
+    });
 
-    const credentials = this.authForm.value;
-
-    console.log(this.authForm.value)
     this.userService
     .attemptAuth(this.authType, credentials)
     .subscribe(
