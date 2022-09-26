@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor , HttpTokenInterceptor} from './interceptors';
 
 import {
@@ -11,7 +11,8 @@ import {
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
   providers: [
       { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

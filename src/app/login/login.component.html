@@ -1,1 +1,69 @@
-<p>login works!</p>
+<section class="loginArea">
+  <div class="container">
+    <div class="loginHeader">
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <a [routerLink]="['/']">
+            <img src="assets/images/logo.png" alt="" />
+          </a>
+        </div>
+        <div class="col-12 col-md-6 text-right">
+          <a class="myBtn" [routerLink]="['/signup']">Sign Up</a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <div class="formDesing" [formGroup]="authForm">
+          <div>
+            <h1>Your Pet is Part of Our Family</h1>
+            <div class="form-group">
+              <label for="">Email</label>
+              <input
+                class="form-control"
+                type="text"
+                placeholder="Enter Email"
+              />
+            </div>
+            <div class="form-group formIcon">
+              <label for="">Password</label>
+              <input
+                class="form-control"
+                type="password"
+                placeholder="Enter Password"
+              />
+              <!-- <div class="icon">
+                                  <svg viewBox="0 0 18.697 16.36">
+                                      <use xlink:href="#passwordIcon"></use>
+                                  </svg>
+                              </div> -->
+            </div>
+
+            <div class="acceptTerm">
+              <div class="acceptCheck">
+                <input class="customCheck" type="checkbox" id="accept" />
+                <label for="accept">Remember me</label>
+              </div>
+              <a href="buildingList.html">Forgot Password?</a>
+            </div>
+            <br /><br />
+
+            <div class="text-center">
+              <a class="myBtn">Sign In</a>
+              <p>
+                Don't have an account? <a [routerLink]="['/signup']">Sign Up</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <img
+          class="loginIllustration"
+          src="assets/images/loginIllustration.png"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
+</section>

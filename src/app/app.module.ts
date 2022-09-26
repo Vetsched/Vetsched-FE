@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { UserService } from './core';
 import { CoreModule } from './core/core.module';
 
 @NgModule({
@@ -14,7 +15,11 @@ import { CoreModule } from './core/core.module';
     AppRoutingModule,
     CoreModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(private userService : UserService) {
+    this.userService.populate();
+  }
+}

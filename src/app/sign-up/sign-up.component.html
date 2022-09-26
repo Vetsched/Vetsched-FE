@@ -1,1 +1,159 @@
-<p>sign-up works!</p>
+<section class="authSection">
+  <!-- <img class="design" src="assets/images/signupFrame.png"> -->
+  <div class="row">
+    <div class="col-12 col-sm-6">
+      <img class="loginBg" src="assets/images/signupFrame.png" alt="" />
+
+      <div class="loginHeader">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <a [routerLink]="['/']">
+              <img src="assets/images/logo.png" alt="" />
+            </a>
+          </div>
+          <div class="col-12 col-md-6">
+            <h2>Your Pet is Part of Our Family</h2>
+          </div>
+        </div>
+      </div>
+      <div class="authSideWrapper">
+        <div class="innerWrapper"></div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-6">
+      <a
+        class="myBtn square mt-3"
+        [routerLink]="['/login']"
+        *ngIf="currentTab === 'signup'"
+        ><svg viewBox="0 0 28 28">
+          <use xlink:href="#backArrow"></use></svg
+      ></a>
+      <div class="formDesing" *ngIf="currentTab === 'signup'">
+        <div>
+          <h3>Sign up</h3>
+          <div class="form-group">
+            <label for="">Select Type</label>
+            <select class="form-control">
+              <option value="1">Option 1</option>
+              <option value="1">Option 2</option>
+              <option value="1">Option 3</option>
+              <option value="1">Option 4</option>
+            </select>
+          </div>
+          <div class="form-group formIcon">
+            <label for="">Name</label>
+            <input class="form-control" type="text" placeholder="Enter Name" />
+          </div>
+          <div class="form-group formIcon">
+            <label for="">Email</label>
+            <input
+              class="form-control"
+              type="email"
+              placeholder="Enter Email"
+            />
+          </div>
+          <div class="form-group formIcon">
+            <label for="">Address</label>
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Enter Address"
+            />
+          </div>
+          <div class="form-group formIcon">
+            <label for="">Phone #</label>
+            <input
+              class="form-control"
+              type="tel"
+              placeholder="Enter Phone #"
+            />
+          </div>
+          <div class="form-group formIcon">
+            <label for="">Password</label>
+            <input
+              class="form-control"
+              type="password"
+              placeholder="Enter Password"
+            />
+          </div>
+          <div class="form-group formIcon">
+            <label for="">Confirm Password</label>
+            <input
+              class="form-control"
+              type="password"
+              placeholder="Enter Password"
+            />
+          </div>
+          <br />
+          <div class="text-center">
+            <a class="myBtn" (click)="signup()">Sign up</a>
+            <p>
+              Already have an account? <a [routerLink]="['/login']">Sign in</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="formDesing mt-5" *ngIf="currentTab === 'email'">
+        <div>
+          <div class="text-center">
+            <h3>Email Verification</h3>
+            <p>
+              Send verification link and code on your Email address, click on
+              link or enter a code.
+            </p>
+          </div>
+          <br /><br />
+          <div class="form-group">
+            <label for="">Code</label>
+            <input class="form-control" type="text" placeholder="Enter Code" />
+          </div>
+          <br />
+          <div class="text-center">
+            <a class="myBtn" (click)="verifyEmail()">Next</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="formDesing mt-5" *ngIf="currentTab === 'service'">
+        <div>
+          <div class="text-center">
+            <h3>Chose Services</h3>
+          </div>
+          <br /><br />
+          <div class="form-group">
+            <label for="">Services</label>
+            <select class="form-control">
+              <option [value]="service.id" *ngFor="let service of services">
+                {{ service.value }}
+              </option>
+            </select>
+          </div>
+          <br />
+          <div class="text-center">
+            <a class="myBtn" href="#">Next</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<svg
+  class="icon-definitions"
+  style="display: none"
+  version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+>
+  <defs>
+    <symbol id="backArrow" viewBox="0 0 24 24">
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M4.2097 12.6129L4.29289 12.7071L9.29289 17.7071C9.68342 18.0976 10.3166 18.0976 10.7071 17.7071C11.0676 17.3466 11.0953 16.7794 10.7903 16.3871L10.7071 16.2929L7.415 13L19 13C19.5523 13 20 12.5523 20 12C20 11.4872 19.614 11.0645 19.1166 11.0067L19 11L7.415 11L10.7071 7.70711C11.0676 7.34662 11.0953 6.77939 10.7903 6.3871L10.7071 6.29289C10.3466 5.93241 9.77939 5.90468 9.3871 6.2097L9.29289 6.29289L4.29289 11.2929C3.93241 11.6534 3.90468 12.2206 4.2097 12.6129Z"
+        fill="currentColor"
+      />
+    </symbol>
+  </defs>
+</svg>
