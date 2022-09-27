@@ -1,7 +1,7 @@
 <section class="authSection">
   <!-- <img class="design" src="assets/images/signupFrame.png"> -->
   <div class="row">
-    <div class="col-12 col-sm-6">
+    <div class="col-12 col-sm-6 hideSm">
       <img class="loginBg" src="assets/images/signupFrame.png" alt="" />
 
       <div class="loginHeader">
@@ -21,13 +21,32 @@
       </div>
     </div>
     <div class="col-12 col-sm-6">
-      <a
-        class="myBtn square mt-3"
-        [routerLink]="['/login']"
-        *ngIf="currentTab === 'signup'"
-        ><svg viewBox="0 0 28 28">
-          <use xlink:href="#backArrow"></use></svg
-      ></a>
+      <div class="tabWarpper mt-3">
+        <a
+          class="myBtn square mt-3"
+          [routerLink]="['/login']"
+          *ngIf="currentTab === 'signup'"
+          ><svg viewBox="0 0 28 28">
+            <use xlink:href="#backArrow"></use>
+          </svg>
+        </a>
+        <div class="tabOuter">
+          <ul class="nav WizardTabs nav-justified" role="tablist">
+            <li class="nav-item">
+              <a class="active" data-toggle="tab">Step 1</a>
+            </li>
+            <li class="nav-item">
+              <a [ngClass]="{'active' : currentTab === 'email' || currentTab === 'service'}">Step 2</a>
+            </li>
+            <li class="nav-item">
+              <a [ngClass]="{'active' : currentTab === 'service'}">Step 3</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a data-target="#Step4">Step 4</a>
+            </li> -->
+          </ul>
+        </div>
+      </div>
       <div class="formDesing" *ngIf="currentTab === 'signup'">
         <div [formGroup]="signUpForm">
           <h3>Sign up</h3>
@@ -40,7 +59,7 @@
                 redBorder:
                   signUpForm.controls['profileType'].invalid &&
                   (signUpForm.controls['profileType'].dirty ||
-                  signUpForm.controls['profileType'].touched)
+                    signUpForm.controls['profileType'].touched)
               }"
             >
               <option value="">Select Type</option>
@@ -59,7 +78,7 @@
                 redBorder:
                   signUpForm.controls['firstName'].invalid &&
                   (signUpForm.controls['firstName'].dirty ||
-                  signUpForm.controls['firstName'].touched)
+                    signUpForm.controls['firstName'].touched)
               }"
             />
           </div>
@@ -74,7 +93,7 @@
                 redBorder:
                   signUpForm.controls['email'].invalid &&
                   (signUpForm.controls['email'].dirty ||
-                  signUpForm.controls['email'].touched)
+                    signUpForm.controls['email'].touched)
               }"
             />
           </div>
@@ -98,7 +117,7 @@
                 redBorder:
                   signUpForm.controls['phone'].invalid &&
                   (signUpForm.controls['phone'].dirty ||
-                  signUpForm.controls['phone'].touched)
+                    signUpForm.controls['phone'].touched)
               }"
             />
           </div>
@@ -113,7 +132,7 @@
                 redBorder:
                   signUpForm.controls['password'].invalid &&
                   (signUpForm.controls['password'].dirty ||
-                  signUpForm.controls['password'].touched)
+                    signUpForm.controls['password'].touched)
               }"
             />
           </div>
@@ -128,7 +147,7 @@
                 redBorder:
                   signUpForm.controls['confirmPassword'].invalid &&
                   (signUpForm.controls['confirmPassword'].dirty ||
-                  signUpForm.controls['confirmPassword'].touched)
+                    signUpForm.controls['confirmPassword'].touched)
               }"
             />
           </div>
