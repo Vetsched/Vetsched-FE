@@ -80,15 +80,15 @@ a:hover {
 }
 
 .myBtn.success {
-    background: #d4f6ee;
-    border: 1px solid #00c99c;
-    color: #00c99c
+    background: #00D097;
+    border: 1px solid #00D097;
+    /* color: #fff */
 }
 
 .myBtn.danger {
-    background: #ffd9d9;
-    border: 1px solid #c60808;
-    color: #c60808
+    background: #FF5851;
+    border: 1px solid #FF5851;
+    /* color: #c60808 */
 }
 
 .myBtn.warning {
@@ -269,6 +269,7 @@ a:hover {
     background: #00D097;
 }
 
+
 /**********************
 common styles ends here 
 ***********************/
@@ -352,7 +353,8 @@ login page starts here
 
 .formDesing .form-control {
     border-radius: 50px;
-    height: 44px;
+    min-height: 44px;
+    resize: none;
     font-size: 16px;
     font-size: 14px;
     /* color: #2E4765; */
@@ -588,7 +590,8 @@ login page ends here
     border: 1px solid var(--primary);
 }
 
-.profileImg.active::before {
+.profileImg.active::before,
+.profileImg button {
     content: "";
     position: absolute;
     bottom: 1%;
@@ -612,14 +615,14 @@ login page ends here
     object-fit: cover;
 }
 
-.profileDropDown .dropdown-menu {
+.customDropdown .dropdown-menu {
     border: 1px solid #F3F3F3;
     box-shadow: 0px 2px 4px rgba(63, 140, 255, 0.22);
     border-radius: 5px;
     margin-top: 9px;
 }
 
-.profileDropDown .dropdown-menu::before {
+.customDropdown .dropdown-menu::before {
     content:
         '';
     background-color: #FFFFFF !important;
@@ -634,6 +637,16 @@ login page ends here
     z-index: 22;
     opacity: 1;
     transition: 0.4s ease all;
+}
+
+.customDropdown a {
+    color: #080808;
+    font-size: 14px;
+}
+
+.customDropdown a svg {
+    width: 15px;
+    margin-right: 7px;
 }
 
 /* profile images section starts here */
@@ -692,7 +705,7 @@ login page ends here
 
 .mainHeading {
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 600;
     margin: 20px 0;
 }
 
@@ -703,6 +716,7 @@ login page ends here
     border-radius: 10px;
     overflow: hidden;
     display: flex;
+    margin: 15px 0;
 }
 
 .cardImg {
@@ -726,6 +740,7 @@ login page ends here
 
 .cardContent>div {
     padding: 10px;
+    width: 100%;
 }
 
 .cardContent a {
@@ -736,11 +751,15 @@ login page ends here
     font-size: 18px;
     font-weight: 500;
     margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .cardTitle a svg {
     width: 17px;
-    float: right;
+    height: 14px;
+    /* float: right; */
 }
 
 .cardContent p {
@@ -756,6 +775,28 @@ login page ends here
     justify-content: space-between;
 }
 
+.addMoreWrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.addMore {
+    background: var(--primary);
+    font-size: 37px;
+    color: #fff;
+    border-radius: 50%;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    box-shadow: 0px 4px 4px rgb(63 171 243 / 25%);
+}
+
+.addMore:hover {
+    color: #fff;
+}
+
 /* modal design starts here */
 
 .modal-backdrop {
@@ -765,12 +806,17 @@ login page ends here
 .customModal {
     border: none;
     box-shadow: 0px 6px 12px rgba(63, 140, 255, 0.263686);
+    border-radius: 12px;
+}
+
+.customModal .modal-body {
+    padding: 35px;
 }
 
 .customModal .modal-header {
     border: none;
     align-items: center;
-    padding: 25px;
+    padding: 35px;
 }
 
 .customModal .modal-header h2 {
@@ -792,6 +838,65 @@ login page ends here
 
 .modal-sm {
     max-width: 340px;
+}
+
+.customModal .formDesing {
+    width: 100%;
+}
+
+/* update profile modal starts here */
+
+.updateProfile .profileImg {
+    width: 100px;
+    height: 100px;
+    background: #D9D9D9;
+    margin: auto;
+}
+
+.updateProfile .customDropdown {
+    position: absolute;
+    bottom: 1%;
+    right: 1%;
+}
+
+.updateProfile button {
+    width: 25px;
+    height: 25px;
+    background: var(--primary);
+    padding: 0 5px;
+    color: #fff;
+}
+
+.updateProfile button svg {
+    transform: translateY(-2.5px);
+}
+
+/* view per modal starts here */
+.viewProfile h2 {
+    font-size: 18px;
+    margin-top: 8px;
+    margin-bottom: 0;
+}
+
+.viewProfile p {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.viewProfile span {
+    font-size: 12px;
+}
+
+.commentArea .sendArea {
+    margin: 0 -35px -35px -35px;
+}
+
+.commentArea .sendMsg {
+    margin-right: 0;
+}
+
+.commentArea .attachmentBtn {
+    margin-right: 15px;
 }
 
 /* custom tabs starts here */
@@ -884,10 +989,10 @@ login page ends here
 Upload Profile 
 *****************/
 .uploadWrapper {
-    background: #FEF7EE;
-    border-radius: 5px;
-    border: 1px dashed #C79C3B;
-    margin: 15px 0;
+    background: #fff;
+    border-radius: 14px;
+    border: 1px dashed var(--primary);
+    /* margin: 15px 0; */
     text-align: center;
     position: relative;
     padding: 60px 0;
@@ -1202,4 +1307,234 @@ Upload Profile
     left: 50%;
     transform: translate(-50%, -50%) rotate(80deg);
     font-size: 22px;
+}
+
+/* list style starts here  */
+.listingDesing {
+    padding: 20px 0;
+}
+
+.listItem+.listItem {
+    border-top: 1px solid #E0E0E0;
+}
+
+.listItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.userImgName {
+    display: flex;
+    align-items: center;
+}
+
+.userImgName .profileImg {
+    margin-right: 8px;
+    flex: 0 0 40px;
+}
+
+.petNumber p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* signup tabs starts here */
+.tabWarpper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.tabOuter {
+    width: 100%;
+}
+
+.WizardTabs {
+    width: 290px;
+    margin: auto;
+    position: relative;
+}
+
+.WizardTabs::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-image: linear-gradient(to right, transparent 50%, #CBCBCB 50%);
+    background-size: 20px 100%;
+}
+
+.WizardTabs a {
+    padding-top: 30px;
+    position: relative;
+    display: inline-block;
+    font-weight: 100;
+    color: #707070;
+    cursor: pointer;
+    transition: 0.4s ease all;
+}
+
+.WizardTabs a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #707070;
+    box-shadow: 0 0 0 1px #fff, 0 0 0 2px #707070;
+    transition: 0.4s ease all;
+}
+
+.WizardTabs a.active {
+    font-weight: 600;
+    color: #3D3E40;
+}
+
+.WizardTabs a.active::after, .WizardTabs a:hover::after {
+    background: var(--primary);
+    box-shadow: 0 0 0 1px #fff, 0 0 0 2px var(--primary);
+}
+
+.WizardContent {
+    padding: 20px 0;
+}
+
+/* media queries starts here */
+
+@media (max-width: 1400px) {}
+
+@media (max-width: 1300px) {}
+
+@media (max-width: 1199px) {
+    .loginArea h1 {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 991px) {}
+
+@media (max-width: 768px) {
+    .hideSm {
+        display: none;
+    }
+
+    .loginArea h1 {
+        font-size: 30px;
+    }
+
+    .authSection {
+        padding: 25px 15px;
+    }
+
+    .formDesing h3 {
+        font-size: 18px;
+    }
+
+    .customNav {
+        padding: 8px 0;
+    }
+
+    .customNav .container {
+        max-width: 100%;
+    }
+
+    .mainHeading {
+        font-size: 18px;
+    }
+
+    .searchWrapper {
+        margin: 14px 0 0 0;
+    }
+
+    .listItem {
+        background: #F4F8FB;
+        border-radius: 6px;
+    }
+
+    .listItem+.listItem {
+        border: none;
+        margin-top: 15px;
+    }
+
+    .listAction .danger {
+        display: none;
+    }
+
+}
+
+@media (max-width: 577px) {
+
+    .hideXs {
+        display: none;
+    }
+
+    .loginArea {
+        padding: 25px 0;
+    }
+
+    .loginArea h1 {
+        font-size: 24px;
+    }
+
+    .navWrapper {
+        display: inline-flex;
+        width: auto;
+    }
+
+    .navbar-collapse {
+        position: absolute;
+        top: 100%;
+        left: 15px;
+        width: calc(100% - 30px);
+        background: #fff;
+        z-index: 2;
+        border-radius: 5px;
+        box-shadow: 0px 4px 25px -5px rgb(63 171 243 / 25%);
+        padding: 15px;
+    }
+
+    .navbar-toggler {
+        padding: 0;
+    }
+
+    .userImgName {
+        font-size: 12px;
+    }
+
+    .petNumber p {
+        font-size: 10px;
+    }
+
+    .customTabs a.tab {
+        font-size: 12px;
+        padding: 10px 10px;
+    }
+
+    .WizardTabs {
+        width: 220px;
+    }
+
+    .WizardTabs::before {
+        top: 5px;
+    }
+
+    .WizardTabs a {
+        font-size: 12px;
+        padding-top: 20px;
+    }
+
+    .WizardTabs a::after {
+        width: 10px;
+        height: 10px;
+    }
+
+
 }
