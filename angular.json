@@ -22,6 +22,7 @@
             "styles": [
               "src/assets/bootstrap/css/bootstrap.min.css",
               "src/assets/font-awesome/css/font-awesome.min.css",
+              "node_modules/ngx-toastr/toastr.css",
               "src/assets/css/styles.css",
               "src/styles.css"
             ],
