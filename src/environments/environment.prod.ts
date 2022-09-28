@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api_url: 'http://localhost:7006'
+  api_url: 'https://vetschedapi.herokuapp.com/api'
 };
