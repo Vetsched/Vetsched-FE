@@ -190,7 +190,7 @@
           <br /><br />
           <div class="form-group">
             <label for="">Services</label>
-            <select class="form-control" [(ngModel)]="providerServices">
+            <select class="form-control" [(ngModel)]="providerServices" multiple>
               <option [value]="service.id" *ngFor="let service of services">
                 {{ service.name }}
               </option>
