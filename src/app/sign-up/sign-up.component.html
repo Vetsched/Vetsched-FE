@@ -73,12 +73,12 @@
               class="form-control"
               type="text"
               placeholder="Enter Name"
-              formControlName="firstName"
+              formControlName="name"
               [ngClass]="{
                 redBorder:
-                  signUpForm.controls['firstName'].invalid &&
-                  (signUpForm.controls['firstName'].dirty ||
-                    signUpForm.controls['firstName'].touched)
+                  signUpForm.controls['name'].invalid &&
+                  (signUpForm.controls['name'].dirty ||
+                    signUpForm.controls['name'].touched)
               }"
             />
           </div>
@@ -173,11 +173,11 @@
           <br /><br />
           <div class="form-group">
             <label for="">Code</label>
-            <input class="form-control" type="text" placeholder="Enter Code" />
+            <input class="form-control" type="text" placeholder="Enter Code" [(ngModel)]="emailVerificationCode" />
           </div>
           <br />
           <div class="text-center">
-            <a class="myBtn" (click)="verifyEmail()">Next</a>
+            <a class="myBtn" (click)="verifyEmail()" id="verifyEmailBtn">Next</a>
           </div>
         </div>
       </div>
@@ -192,7 +192,7 @@
             <label for="">Services</label>
             <select class="form-control">
               <option [value]="service.id" *ngFor="let service of services">
-                {{ service.value }}
+                {{ service.name }}
               </option>
             </select>
           </div>

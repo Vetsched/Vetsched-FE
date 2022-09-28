@@ -28,7 +28,7 @@ export class UserService {
     private http: HttpClient,
     private jwtService: JwtService,
     private router: Router,
-    private toaster: ToastrService,
+    private toaster: ToastrService
   ) {}
 
   addToast(type = '', title = '', description = ''): void {
@@ -49,10 +49,10 @@ export class UserService {
   populate() {
     // If JWT detected, attempt to get & store user's info
     if (
-      this.jwtService.getToken() ||
+      this.jwtService.getToken() &&
       typeof this.jwtService.getToken() !== 'undefined'
     ) {
-      this.apiService.get('/Identity/AuthPing').subscribe(
+      this.apiService.post('/Identity/AuthPing').subscribe(
         (data) => this.setAuth(data.user),
         (err) => this.purgeAuth()
       );
@@ -99,6 +99,11 @@ export class UserService {
     this.isAuthenticatedSubject.next(true);
   }
 
+  setToken(token: string) {
+    this.jwtService.saveToken(token);
+    this.populate();
+  }
+
   purgeAuth() {
     // Remove JWT from local storage
     this.jwtService.destroyToken();
@@ -115,7 +120,7 @@ export class UserService {
 
   attemptAuth(type: string, credentials: any): Observable<User> {
     const route = type === 'login' ? '/login' : '';
-    return this.apiService.post('/Identity' + route, {...credentials }).pipe(
+    return this.apiService.post('/Identity' + route, { ...credentials }).pipe(
       map((data) => {
         console.log(data, 'fsdafdsfds');
         this.setAuth(data.user);
@@ -131,5 +136,15 @@ export class UserService {
   // signup call...
   signup(postData: any): Observable<any> {
     return this.apiService.post('/Identity/SignUp', postData);
+  }
+
+  // verify email...
+  verifyEmail(code: string): Observable<any> {
+    return this.apiService.post('/Identity/VerifyEmail', {code});
+  }
+  
+  // get all services...
+  getServices(): Observable<any> {
+    return this.apiService.get('/api/Service/GetAll');
   }
 }
