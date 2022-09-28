@@ -91,7 +91,6 @@ export class UserService {
 
   setAuth(user: User) {
     // Save JWT sent from server in local storage
-    console.log(user, 'user');
     this.jwtService.saveToken(user.token);
     // Set current user data into observable
     this.currentUserSubject.next(user);
@@ -122,7 +121,6 @@ export class UserService {
     const route = type === 'login' ? '/login' : '';
     return this.apiService.post('/Identity' + route, { ...credentials }).pipe(
       map((data) => {
-        console.log(data, 'fsdafdsfds');
         this.setAuth(data.user);
         return data;
       })
@@ -140,11 +138,21 @@ export class UserService {
 
   // verify email...
   verifyEmail(code: string): Observable<any> {
-    return this.apiService.post('/Identity/VerifyEmail', {code});
+    return this.apiService.post('/Identity/VerifyEmail', { code });
   }
-  
+
   // get all services...
   getServices(): Observable<any> {
     return this.apiService.get('/api/Service/GetAll');
+  }
+
+  // save no of pets...
+  saveNoOfPets(numberOfPet: number): Observable<any> {
+    return this.apiService.post('/api/UserProfile/Update', { numberOfPet });
+  }
+
+  // save provider services...
+  saveProviderServices(serviceIds: string[]): Observable<any> {
+    return this.apiService.post('/api/Service/AddService', { serviceIds });
   }
 }

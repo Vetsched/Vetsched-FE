@@ -183,14 +183,14 @@
       </div>
 
       <div class="formDesing mt-5" *ngIf="currentTab === 'service'">
-        <div>
+        <div *ngIf="currentUser && currentUser.profileType === 1">
           <div class="text-center">
             <h3>Chose Services</h3>
           </div>
           <br /><br />
           <div class="form-group">
             <label for="">Services</label>
-            <select class="form-control">
+            <select class="form-control" [(ngModel)]="providerServices">
               <option [value]="service.id" *ngFor="let service of services">
                 {{ service.name }}
               </option>
@@ -198,7 +198,21 @@
           </div>
           <br />
           <div class="text-center">
-            <a class="myBtn" href="#">Next</a>
+            <a class="myBtn" (click)="saveProviderServices()" id="providerServices">Next</a>
+          </div>
+        </div>
+        <div *ngIf="currentUser && currentUser.profileType === 2">
+          <div class="text-center">
+            <h3>No of Pets</h3>
+          </div>
+          <br /><br />
+          <div class="form-group">
+            <label for="">How many pets</label>
+            <input class="form-control" type="number" placeholder="No of Pets" [(ngModel)]="noOfPets" min="1" max="100" />
+          </div>
+          <br />
+          <div class="text-center">
+            <a class="myBtn" (click)="saveNoOfPets()" id="noOfPets">Next</a>
           </div>
         </div>
       </div>

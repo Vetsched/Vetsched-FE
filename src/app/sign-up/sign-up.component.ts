@@ -12,6 +12,9 @@ export class SignUpComponent implements OnInit {
   services: any = [];
   signUpForm: FormGroup;
   emailVerificationCode: string = '';
+  currentUser: any = {};
+  providerServices: any = [];
+  noOfPets: number = 0;
   constructor(private fb: FormBuilder, private service: UserService) {
     this.signUpForm = this.fb.group({
       name: ['', Validators.required],
@@ -32,9 +35,14 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadServices();
+    this.service.currentUser.subscribe((x) => {
+      if (x.token !== null) {
+        this.currentUser = x;
+      }
+    });
   }
   loadServices(): void {
-    this.service.getServices().subscribe(data => {
+    this.service.getServices().subscribe((data) => {
       this.services = data;
     });
   }
@@ -45,36 +53,63 @@ export class SignUpComponent implements OnInit {
     }
     const btn: any = document.getElementById('signupBtn');
     btn.disabled = true;
-    this.service
-      .signup({
-        ...this.signUpForm.value,
-        profileType: parseInt(this.signUpForm.value.profileType),
-      })
-      .subscribe((response) => {
-        if (response.token !== null) {
-          this.currentTab = 'email';
-          this.service.setToken(response.token);
-        } else {
-          btn.disabled = false;
-          this.service.addToast(
-            'error',
-            response.statusMessage || 'Something went wrong, please try again',
-            ''
-          );
-        }
-      });
+    const user = {
+      ...this.signUpForm.value,
+      profileType: parseInt(this.signUpForm.value.profileType),
+    };
+    this.service.signup({ ...user }).subscribe((response) => {
+      if (response.token !== null) {
+        this.currentTab = 'email';
+        delete user.password;
+        delete user.confirmPassword;
+        this.service.setAuth({ token: response.token, ...user });
+      } else {
+        btn.disabled = false;
+        this.service.addToast(
+          'error',
+          response.statusMessage || 'Something went wrong, please try again',
+          ''
+        );
+      }
+    });
   }
   verifyEmail(): void {
-    if (this.emailVerificationCode !== null && this.emailVerificationCode !== '') {
+    this.currentTab = 'service';
+    return;
+    if (
+      this.emailVerificationCode !== null &&
+      this.emailVerificationCode !== ''
+    ) {
+      const btn: any = document.getElementById('verifyEmailBtn');
+      btn.disabled = true;
+      this.service
+        .verifyEmail(this.emailVerificationCode)
+        .subscribe((response) => {
+          if (response.success === 200) {
+            this.currentTab = 'service';
+            this.service.addToast('success', 'Email verified successfully', '');
+          } else {
+            btn.disabled = false;
+            this.service.addToast(
+              'error',
+              response.statusMessage ||
+                'Something went wrong, please try again',
+              ''
+            );
+          }
+        });
+    } else {
       return;
     }
-    const btn: any = document.getElementById('verifyEmailBtn');
-    btn.disabled = true;
-    this.service
-      .verifyEmail(this.emailVerificationCode)
-      .subscribe((response) => {
+  }
+  saveNoOfPets(): void {
+    if (this.noOfPets > 0) {
+      const btn: any = document.getElementById('noOfPets');
+      btn.disabled = true;
+      this.service.saveNoOfPets(this.noOfPets).subscribe((response) => {
         if (response.success === 200) {
-          this.currentTab = 'service';
+          // this.currentTab = 'payment';
+          this.service.addToast('success', 'No of pets saved successfully', '');
         } else {
           btn.disabled = false;
           this.service.addToast(
@@ -84,6 +119,37 @@ export class SignUpComponent implements OnInit {
           );
         }
       });
+    } else {
+      return;
+    }
+  }
+  saveProviderServices(): void {
+    if (this.providerServices && this.providerServices.length > 0) {
+      const btn: any = document.getElementById('providerServices');
+      btn.disabled = true;
+      this.service
+        .saveProviderServices(this.providerServices)
+        .subscribe((response) => {
+          if (response.success === 200) {
+            // this.currentTab = 'payment';
+            this.service.addToast(
+              'success',
+              'Provider Services saved successfully',
+              ''
+            );
+          } else {
+            btn.disabled = false;
+            this.service.addToast(
+              'error',
+              response.statusMessage ||
+                'Something went wrong, please try again',
+              ''
+            );
+          }
+        });
+    } else {
+      return;
+    }
   }
   createCompareValidator(controlOne: any, controlTwo: any) {
     return () => {
