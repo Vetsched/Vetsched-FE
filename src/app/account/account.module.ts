@@ -13,6 +13,7 @@ import { PetsComponent } from './petlover/pets/pets.component';
 import { ViewPetComponent } from './petlover/view-pet/view-pet.component';
 import { AddPetComponent } from './petlover/add-pet/add-pet.component';
 import { ViewServiceProviderComponent } from './petlover/view-service-provider/view-service-provider.component';
+import { RequestsComponent } from './serviceprovider/requests/requests.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ViewServiceProviderComponent } from './petlover/view-service-provider/v
     PetsComponent,
     ViewPetComponent,
     AddPetComponent,
-    ViewServiceProviderComponent
+    ViewServiceProviderComponent,
+    RequestsComponent
   ],
   imports: [
     CommonModule,

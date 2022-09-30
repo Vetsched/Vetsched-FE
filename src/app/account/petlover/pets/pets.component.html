@@ -1,8 +1,8 @@
 <div class="row">
   <div class="col-12 col-md-7 col-lg-6">
     <div class="customTabs">
-      <a class="tab active" href="#">Connected Doctors</a>
-      <a class="tab" href="#">Your Pets</a>
+      <a class="tab" [routerLink]="['/account']">Service Provider</a>
+      <a class="tab active" [routerLink]="['/account', 'pets']">Your Pets</a>
     </div>
   </div>
   <div class="col-12 col-md-5 col-lg-6">
@@ -40,7 +40,6 @@
     </div>
   </div>
 </div>
-<!-- <h1 class="mainHeading">Pet Lovers</h1> -->
 <div class="row">
   <div class="col-12 col-md-6">
     <div class="customCard">
@@ -412,6 +411,15 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-10 col-lg-8 mx-auto">
+      <div class="notFound">
+          <img src="assets/images/noPetLover.png" alt="">
+          <p>No Pet</p>
+      </div>
   </div>
 </div>
 <div class="addMoreWrapper">
