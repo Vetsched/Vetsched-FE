@@ -117,12 +117,15 @@ export class UserService {
     }
   }
 
-  attemptAuth(type: string, credentials: any): Observable<User> {
+  attemptAuth(type: string, credentials: any): Observable<any> {
     const route = type === 'login' ? '/login' : '';
     return this.apiService.post('/Identity' + route, { ...credentials }).pipe(
-      map((data) => {
-        this.setAuth(data.user);
-        return data;
+      map((response) => {
+        if (response.data !== null) {
+          this.jwtService.saveToken(response.data);
+          // this.populate();
+        }
+        return response;
       })
     );
   }
@@ -148,7 +151,7 @@ export class UserService {
 
   // save no of pets...
   saveNoOfPets(numberOfPet: number): Observable<any> {
-    return this.apiService.post('/api/UserProfile/Update', { numberOfPet });
+    return this.apiService.put('/api/UserProfile/Update', { numberOfPet });
   }
 
   // save provider services...

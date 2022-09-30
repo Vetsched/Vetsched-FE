@@ -1,0 +1,178 @@
+<div class="modal fade" id="addPet">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content customModal">
+      <div class="modal-header">
+        <h2 class="mainHeading">Add Pet</h2>
+        <button class="myBtn square" data-dismiss="modal">x</button>
+      </div>
+      <div class="modal-body">
+        <!-- <p class="text text-center">To create the purchase order, Please select the category first</p> -->
+        <div class="formDesing">
+          <div>
+            <div class="updateProfile">
+              <div class="profileImg">
+                <!-- <img src="assets/images/profileImg.png" alt=""> -->
+                <div class="customDropdown dropdown">
+                  <button id="profilePic" data-toggle="dropdown">
+                    <svg viewBox="0 0 12 12">
+                      <use xlink:href="#edit"></use>
+                    </svg>
+                  </button>
+                  <div
+                    class="dropdown-menu dropdown-menu-right"
+                    aria-labelledby="profilePic"
+                  >
+                    <a class="dropdown-item" href="#"> Upload Picture </a>
+                    <a class="dropdown-item" href="#"> Remove Picture </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="">Service</label>
+              <select class="form-control">
+                <option value="1">Option 1</option>
+                <option value="1">Option 2</option>
+                <option value="1">Option 3</option>
+                <option value="1">Option 4</option>
+              </select>
+            </div>
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <label for="">Name</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Parrot "
+                  />
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <label for="">Breed</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Blue-Yellow Ara"
+                  />
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="row">
+                  <div class="col-6">
+                    <div class="form-group">
+                      <label for="">Age</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="YYYY-MM-DD"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-group">
+                      <label for="">Sex</label>
+                      <select class="form-control">
+                        <option value="1">Male</option>
+                        <option value="1">Female</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="row">
+                  <div class="col-6">
+                    <div class="form-group">
+                      <label for="">Microchiped</label>
+                      <select class="form-control">
+                        <option value="1">Yes</option>
+                        <option value="1">No</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-group">
+                      <label for="">Vaccination</label>
+                      <select class="form-control">
+                        <option value="1">Yes</option>
+                        <option value="1">No</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <label for="">Vaccine</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Enter Vaccine Name "
+                  />
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <label for="">Allergies</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Allergy if any"
+                  />
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <label for="">Current/Pervious Medication</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Medications"
+                  />
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <label for="">Last visit to Vet & Reason</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Enter Last Visit"
+                  />
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-group" style="height: 100%">
+                  <label for="">Details</label>
+                  <textarea
+                    class="form-control"
+                    style="height: calc(100% - 24.5px)"
+                    placeholder="Detail"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <label for="">Details</label>
+                <div class="uploadWrapper">
+                  <input type="file" />
+                  <div class="icon">
+                    <svg viewBox="0 0 45 45">
+                      <use xlink:href="#upload"></use>
+                    </svg>
+                  </div>
+                  <h2>
+                    Drag & Drop or
+                    <b class="text primary">Click to add Pet image</b>
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
