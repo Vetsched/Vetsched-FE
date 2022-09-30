@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/core';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  currentUser:any = {
+    profileType : 1
+  };
+  constructor(private service : UserService) { }
 
   ngOnInit(): void {
+    // this.service.currentUser.subscribe((x) => {
+    //   if (x.token !== null) {
+    //     this.currentUser = x;
+    //   }
+    // });
   }
 
 }

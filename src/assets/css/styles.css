@@ -485,6 +485,14 @@ login page ends here
 
 /* search bar starts here */
 
+.searchWithBtn {
+    display: flex;
+}
+
+.searchWithBtn a {
+    width: 100%;
+}
+
 .searchWrapper {
     margin: 0 8px;
     width: 100%;
@@ -829,6 +837,12 @@ login page ends here
     margin-bottom: 15px;
     text-align: center;
     color: #3D4461;
+}
+
+.customModal .modal-body .deleteText {
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
 }
 
 .customModal .modal-body .myBtn {
@@ -1335,10 +1349,36 @@ Upload Profile
     flex: 0 0 40px;
 }
 
+.userImgName p {
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.petNumber span, .petNumber a {
+    font-size: 12px;
+}
+
 .petNumber p {
     margin: 0;
     font-size: 14px;
     font-weight: 700;
+}
+
+/* not found section starts here */
+
+.notFound {
+    text-align: center;
+    padding: 25px 15px;
+}
+
+.notFound p {
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+.notFound img {
+    max-width: 100%;
 }
 
 /* signup tabs starts here */
