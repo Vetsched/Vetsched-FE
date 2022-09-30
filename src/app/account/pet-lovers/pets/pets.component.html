@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-12 col-md-7 col-lg-6">
+    <div class="customTabs">
+      <a class="tab" [routerLink]="['/account']">Service Provider</a>
+      <a class="tab active" [routerLink]="['/account', 'pets']">Your Pets</a>
+    </div>
+  </div>
+  <div class="col-12 col-md-5 col-lg-6">
+    <div class="searchWrapper">
+      <div class="search">
+        <input type="text" placeholder="Search for anything" />
+        <button>
+          <svg viewBox="0 0 24 24">
+            <use xlink:href="#search"></use>
+          </svg>
+        </button>
+        <div class="searhSuggestion d-none">
+          <div class="suggetItem">
+            <div class="userImg"><img src="assets/images/user.png" /></div>
+            <h3>Anna Marie</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" *ngIf="pets && pets.length > 0">
+  <div class="col-12 col-md-6" *ngFor="let pet of pets; let i = index">
+    <app-pet [pet]="pet" [index]="i"></app-pet>
+  </div>
+</div>
+
+<div class="row" *ngIf="!pets || pets.length === 0">
+  <div class="col-12 col-md-10 col-lg-8 mx-auto">
+    <div class="notFound">
+      <img src="assets/images/noPetLover.png" alt="" />
+      <p>No Pet</p>
+    </div>
+  </div>
+</div>
+<div class="addMoreWrapper">
+  <a class="addMore" data-toggle="modal" data-target="#addPet">+</a>
+</div>
+
+<app-add-pet></app-add-pet>

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pets.component.css']
 })
 export class PetsComponent implements OnInit {
-
+  pets : any = [];
   constructor() { }
 
   ngOnInit(): void {

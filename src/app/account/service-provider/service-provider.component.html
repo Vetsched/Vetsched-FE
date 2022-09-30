@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-12 col-md-7 col-lg-6">
+    <div class="customTabs">
+      <a class="tab active" [routerLink]="['/account']">Pet Lovers</a>
+      <a class="tab" [routerLink]="['/account', 'requests']">Requests</a>
+    </div>
+  </div>
+  <div class="col-12 col-md-5 col-lg-6">
+    <div class="searchWrapper">
+      <div class="search">
+        <input type="text" placeholder="Search for anything" />
+        <button>
+          <svg viewBox="0 0 24 24">
+            <use xlink:href="#search"></use>
+          </svg>
+        </button>
+        <div class="searhSuggestion d-none">
+          <div class="suggetItem">
+            <div class="userImg"><img src="assets/images/user.png" /></div>
+            <h3>Anna-Marie Modeste</h3>
+          </div>
+          <div class="suggetItem">
+            <div class="userImg"><img src="assets/images/user.png" /></div>
+            <h3>Anna-Marie Modeste</h3>
+          </div>
+          <div class="suggetItem">
+            <div class="userImg"><img src="assets/images/user.png" /></div>
+            <h3>Anna-Marie Modeste</h3>
+          </div>
+          <div class="suggetItem">
+            <div class="userImg"><img src="assets/images/user.png" /></div>
+            <h3>Anna-Marie Modeste</h3>
+          </div>
+          <div class="suggetItem">
+            <div class="userImg"><img src="assets/images/user.png" /></div>
+            <h3>Anna-Marie Modeste</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<h1 class="mainHeading">Pet Lovers</h1>
+<div class="row" *ngIf="petLovers && petLovers.length > 0">
+  <div class="col-12 col-md-6" *ngFor="let petLover of petLovers; let i = index;">
+    <app-pet-lover [petLover]="petLover" [index]="i"></app-pet-lover>
+  </div>
+</div>
+
+
+<div class="row" *ngIf="!petLovers || petLovers.length === 0">
+  <div class="col-12 col-md-10 col-lg-8 mx-auto">
+      <div class="notFound">
+          <img src="assets/images/noPetLover.png" alt="">
+          <p>Pet lover not available</p>
+      </div>
+  </div>
+</div>

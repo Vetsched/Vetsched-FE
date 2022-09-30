@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm customNav">
   <div class="container">
-    <a class="navbar-brand" href="#"> <img src="assets/images/logo.png" /></a>
+    <a class="navbar-brand"> <img src="assets/images/logo.png" /></a>
     <button
       class="navbar-toggler"
       type="button"
@@ -15,16 +15,16 @@
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav m-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" [routerLink]="['/account']">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link">Contact</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Health</a>
+            <a class="nav-link">Health</a>
           </li>
         </ul>
       </div>
@@ -39,13 +39,13 @@
           class="dropdown-menu dropdown-menu-right"
           aria-labelledby="profileDropDown"
         >
-          <a class="dropdown-item" href="#">
+          <a class="dropdown-item">
             <svg class="text primary" viewBox="0 0 16 16">
               <use xlink:href="#profile"></use>
             </svg>
             Profile
           </a>
-          <a class="dropdown-item" href="#">
+          <a class="dropdown-item">
             <svg class="text danger" viewBox="0 0 17 18">
               <use xlink:href="#logOut"></use>
             </svg>
@@ -56,3 +56,5 @@
     </div>
   </div>
 </nav>
+
+<app-view-profile></app-view-profile>
