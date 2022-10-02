@@ -150,12 +150,18 @@ export class UserService {
   }
 
   // save no of pets...
-  saveNoOfPets(numberOfPet: number): Observable<any> {
-    return this.apiService.put('/api/UserProfile/Update', { numberOfPet });
+  saveNoOfPets(numberOfPet: number, id: string): Observable<any> {
+    return this.apiService.put('/api/UserProfile/Update', { numberOfPet, id });
   }
 
   // save provider services...
-  saveProviderServices(serviceIds: string[]): Observable<any> {
-    return this.apiService.post('/api/Service/AddService', { serviceIds });
+  saveProviderServices(
+    serviceIds: string[],
+    profileId: string
+  ): Observable<any> {
+    return this.apiService.post('/api/Service/AddService', {
+      serviceIds,
+      profileId,
+    });
   }
 }

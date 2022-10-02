@@ -60,9 +60,7 @@ export class SignUpComponent implements OnInit {
     this.service.signup({ ...user }).subscribe((response) => {
       if (response.token !== null) {
         this.currentTab = 'email';
-        delete user.password;
-        delete user.confirmPassword;
-        this.service.setAuth({ token: response.token, ...user });
+        this.service.setAuth({ ...response.data, token: response.token });
       } else {
         btn.disabled = false;
         this.service.addToast(
@@ -106,7 +104,7 @@ export class SignUpComponent implements OnInit {
     if (this.noOfPets > 0) {
       const btn: any = document.getElementById('noOfPets');
       btn.disabled = true;
-      this.service.saveNoOfPets(this.noOfPets).subscribe((response) => {
+      this.service.saveNoOfPets(this.noOfPets, this.currentUser.id).subscribe((response) => {
         if (response.success === 200) {
           // this.currentTab = 'payment';
           this.service.addToast('success', 'No of pets saved successfully', '');
@@ -128,7 +126,7 @@ export class SignUpComponent implements OnInit {
       const btn: any = document.getElementById('providerServices');
       btn.disabled = true;
       this.service
-        .saveProviderServices(this.providerServices)
+        .saveProviderServices(this.providerServices, this.currentUser.id)
         .subscribe((response) => {
           if (response.success === 200) {
             // this.currentTab = 'payment';
