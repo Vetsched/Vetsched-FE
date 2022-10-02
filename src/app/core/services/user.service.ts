@@ -164,4 +164,11 @@ export class UserService {
       profileId,
     });
   }
+
+  // get pets....
+  getPets(PetLoverId: string): Observable<any> {
+    return this.apiService.post('/api/Pet/Pets', {
+      PetLoverId,
+    });
+  }
 }
