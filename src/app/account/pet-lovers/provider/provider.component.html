@@ -5,7 +5,7 @@
   <div class="cardContent">
     <div>
       <h1 class="cardTitle">
-        Doctor
+        {{ serviceProvider.name }}
         <a
           class="text danger"
           href="javascript:void(0)"
@@ -17,9 +17,13 @@
           </svg>
         </a>
       </h1>
-      <a href="tel:+9123456789" class="text primary">+9123456789</a>
+      <a [href]="'tel:' + serviceProvider.phone" class="text primary">{{
+        serviceProvider.phone
+      }}</a>
       <p class="text primary">specialization</p>
-      <p>Lorem ipsum dolor sit amet, adipiscing elit. Odio leo ipsum netus .</p>
+      <p>
+        {{ serviceProvider.services && serviceProvider.services.join(",") }}
+      </p>
     </div>
   </div>
 </div>
