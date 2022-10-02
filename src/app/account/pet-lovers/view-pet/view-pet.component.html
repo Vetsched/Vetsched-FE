@@ -12,32 +12,34 @@
             <div class="profileImg">
               <img src="assets/images/petImg-1.png" alt="" />
             </div>
-            <h2>Parrot</h2>
-            <p>Blue-Yellow Ara</p>
+            <h2>{{ pet.name | titlecase }}</h2>
+            <p>{{ pet.breed }}</p>
           </div>
           <div class="row">
             <div class="col-12 col-md-4 col-lg-3">
               <div class="profileDetails">
                 <span>Age</span>
-                <p>2 Year 3 Month</p>
+                <p>{{ pet.age }}</p>
               </div>
             </div>
             <div class="col-12 col-md-4 col-lg-3">
               <div class="profileDetails">
                 <span>Sex</span>
-                <p>Male</p>
+                <p>{{ pet.sex === 0 ? "Female" : "Male" }}</p>
               </div>
             </div>
             <div class="col-12 col-md-4 col-lg-3">
               <div class="profileDetails">
                 <span>Microchiped</span>
-                <p>Yes</p>
+                <p class="text success" *ngIf="pet.microchiped">Yes</p>
+                <p class="text danger" *ngIf="!pet.microchiped">No</p>
               </div>
             </div>
             <div class="col-12 col-md-4 col-lg-3">
               <div class="profileDetails">
                 <span>Vaccination</span>
-                <p>Yes</p>
+                <p class="text success" *ngIf="pet.vaccination">Yes</p>
+                <p class="text danger" *ngIf="!pet.vaccination">No</p>
               </div>
             </div>
           </div>
@@ -45,13 +47,17 @@
             <div class="col-12 col-md-6">
               <div class="profileDetails">
                 <span>Vaccine</span>
-                <p>Combo</p>
+                <p>{{ pet.vaccineRecieved }}</p>
               </div>
             </div>
             <div class="col-12 col-md-6">
               <div class="profileDetails">
                 <span>Allergies</span> <br />
-                <span class="badge primary">Dust allergy</span>
+                <span
+                  class="badge primary"
+                  *ngFor="let allergy of pet.allergies"
+                  >{{ allergy }}</span
+                >
               </div>
             </div>
             <div class="col-12 col-md-6">
@@ -63,7 +69,13 @@
             <div class="col-12 col-md-6">
               <div class="profileDetails">
                 <span>Last visit to Vet & Reason</span>
-                <p>No</p>
+                <p>
+                  {{
+                    pet.lastVistDescription !== ""
+                      ? pet.lastVistDescription
+                      : "No"
+                  }}
+                </p>
               </div>
             </div>
             <div class="col-12">
