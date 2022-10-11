@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from '../core';
 
 @Component({
@@ -15,7 +16,7 @@ export class SignUpComponent implements OnInit {
   currentUser: any = {};
   providerServices: any = [];
   noOfPets: number = 0;
-  constructor(private fb: FormBuilder, private service: UserService) {
+  constructor(private fb: FormBuilder, private service: UserService, private router: Router) {
     this.signUpForm = this.fb.group({
       name: ['', Validators.required],
       profileType: ['', Validators.required],
@@ -104,10 +105,11 @@ export class SignUpComponent implements OnInit {
     if (this.noOfPets > 0) {
       const btn: any = document.getElementById('noOfPets');
       btn.disabled = true;
-      this.service.saveNoOfPets(this.noOfPets, this.currentUser.id).subscribe((response) => {
-        if (response.success === 200) {
+      this.service.saveNoOfPets(this.noOfPets, this.currentUser.profileId).subscribe((response) => {
+        if (response === true) {
           // this.currentTab = 'payment';
           this.service.addToast('success', 'No of pets saved successfully', '');
+          this.router.navigateByUrl('/account');
         } else {
           btn.disabled = false;
           this.service.addToast(
@@ -126,15 +128,16 @@ export class SignUpComponent implements OnInit {
       const btn: any = document.getElementById('providerServices');
       btn.disabled = true;
       this.service
-        .saveProviderServices(this.providerServices, this.currentUser.id)
+        .saveProviderServices(this.providerServices, this.currentUser.profileId)
         .subscribe((response) => {
-          if (response.success === 200) {
+          if (response === true) {
             // this.currentTab = 'payment';
             this.service.addToast(
               'success',
               'Provider Services saved successfully',
               ''
             );
+            this.router.navigateByUrl('/account');
           } else {
             btn.disabled = false;
             this.service.addToast(
