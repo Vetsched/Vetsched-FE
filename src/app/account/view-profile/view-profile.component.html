@@ -1,4 +1,4 @@
-<div class="modal fade" id="viewProfile">
+<div class="modal fade" id="userProfile">
   <div class="modal-dialog modal-md modal-dialog-centered">
     <div class="modal-content customModal">
       <div class="modal-header">
@@ -6,8 +6,7 @@
         <button class="myBtn square" data-dismiss="modal">x</button>
       </div>
       <div class="modal-body">
-        <!-- <p class="text text-center">To create the purchase order, Please select the category first</p> -->
-        <div class="formDesing">
+        <div class="formDesing" [formGroup]="profileForm">
           <div>
             <div class="updateProfile">
               <div class="profileImg">
@@ -22,8 +21,8 @@
                     class="dropdown-menu dropdown-menu-right"
                     aria-labelledby="profilePic"
                   >
-                    <a class="dropdown-item" href="#"> Upload Picture </a>
-                    <a class="dropdown-item" href="#"> Remove Picture </a>
+                    <a class="dropdown-item"> Upload Picture </a>
+                    <a class="dropdown-item"> Remove Picture </a>
                   </div>
                 </div>
               </div>
@@ -34,16 +33,29 @@
                 class="form-control"
                 type="text"
                 placeholder="Enter Name"
+                formControlName="name"
+                [ngClass]="{
+                  redBorder:
+                    profileForm.controls['name'].invalid &&
+                    (profileForm.controls['name'].dirty ||
+                      profileForm.controls['name'].touched)
+                }"
               />
             </div>
-            <div class="form-group">
-              <label for="">Service</label>
-              <select class="form-control">
-                <option value="1">Option 1</option>
-                <option value="1">Option 2</option>
-                <option value="1">Option 3</option>
-                <option value="1">Option 4</option>
-              </select>
+            <div class="form-group formIcon">
+              <label for="">Email</label>
+              <input
+                class="form-control"
+                type="email"
+                placeholder="Enter Email"
+                formControlName="email"
+                [ngClass]="{
+                  redBorder:
+                    profileForm.controls['email'].invalid &&
+                    (profileForm.controls['email'].dirty ||
+                      profileForm.controls['email'].touched)
+                }"
+              />
             </div>
             <div class="form-group formIcon">
               <label for="">Address</label>
@@ -51,13 +63,14 @@
                 class="form-control"
                 type="text"
                 placeholder="Enter Address"
+                formControlName="address"
               />
             </div>
           </div>
         </div>
 
         <div class="text-center">
-          <a class="myBtn btnSm" href="#">Save</a>
+          <a class="myBtn btnSm" (click)="save()" id="saveProfileBtn">Save</a>
         </div>
       </div>
     </div>

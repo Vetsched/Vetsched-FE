@@ -17,6 +17,19 @@ export class NavBarComponent implements OnInit {
     });
   }
   logout(): void {
+    this.closeLogout();
     this.service.purgeAuth();
+  }
+  closeLogout(): void {
+    $('#confirmLogout').modal('hide');
+  }
+  confirmLogout(): void {
+    $('#confirmLogout').modal('show');
+  }
+  showProfile(): void {
+    $('#userProfile').modal('show');
+  }
+  showServices(): void {
+    $('#servicesModal').modal('show');
   }
 }

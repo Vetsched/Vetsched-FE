@@ -19,6 +19,8 @@ import { RequestComponent } from './service-provider/requests/request/request.co
 import { ProviderComponent } from './pet-lovers/provider/provider.component';
 import { AddServiceProviderComponent } from './add-service-provider/add-service-provider.component';
 import { PetComponent } from './pet-lovers/pets/pet/pet.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ServicesModalComponent } from './services-modal/services-modal.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,10 @@ import { PetComponent } from './pet-lovers/pets/pet/pet.component';
     ProviderComponent,
     AddServiceProviderComponent,
     PetComponent,
+    ServicesModalComponent,
   ],
-  imports: [CommonModule, AccountRoutingModule],
+  imports: [CommonModule, AccountRoutingModule, 
+    FormsModule,
+    ReactiveFormsModule],
 })
 export class AccountModule {}

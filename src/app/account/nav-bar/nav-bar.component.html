@@ -30,7 +30,7 @@
       </div>
       <div class="customDropdown profileDropDown dropdown">
         <button id="profileDropDown" data-toggle="dropdown">
-          <span>{{currentUser.name}}</span>
+          <span>{{ currentUser.name }}</span>
           <div class="profileImg">
             <img src="assets/images/profileImg.png" alt="" />
           </div>
@@ -39,13 +39,17 @@
           class="dropdown-menu dropdown-menu-right"
           aria-labelledby="profileDropDown"
         >
-          <a class="dropdown-item">
+          <a class="dropdown-item" role="button" (click)="showProfile()">
             <svg class="text primary" viewBox="0 0 16 16">
               <use xlink:href="#profile"></use>
             </svg>
             Profile
           </a>
-          <a class="dropdown-item" (click)="logout()">
+          <a class="dropdown-item" role="button" (click)="showServices()" *ngIf="currentUser.profileType === 1">
+            <i class="fa fa-list"></i>
+            Services
+          </a>
+          <a class="dropdown-item" role="button" (click)="confirmLogout()">
             <svg class="text danger" viewBox="0 0 17 18">
               <use xlink:href="#logOut"></use>
             </svg>
@@ -58,3 +62,19 @@
 </nav>
 
 <app-view-profile></app-view-profile>
+<div class="modal fade" id="confirmLogout">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content customModal">
+      <div class="modal-body">
+        <h2 class="modalTitle">Are you sure you want to Logout?</h2>
+        <div class="formDesign">
+          <div class="text-right">
+            <a class="myBtn btnSm" (click)="logout()">Yes</a>
+            <a class="myBtn btnSm simple" (click)="closeLogout()">No</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-services-modal></app-services-modal>

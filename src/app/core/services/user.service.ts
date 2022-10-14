@@ -183,4 +183,11 @@ export class UserService {
       PetLoverId,
     });
   }
+
+  // get provider services....
+  getProviderServices(profileId: string): Observable<any> {
+    return this.apiService.get(
+      '/api/Service/ProviderServices?ProfileId=' + profileId
+    );
+  }
 }
