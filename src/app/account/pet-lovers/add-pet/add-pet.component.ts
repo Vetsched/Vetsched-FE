@@ -9,6 +9,7 @@ import { UserService } from 'src/app/core';
 export class AddPetComponent implements OnInit {
   currentUser: any = {};
   constructor(private service: UserService) {}
+  
   ngOnInit(): void {
     this.service.currentUser.subscribe((x) => {
       if (x.token !== null) {

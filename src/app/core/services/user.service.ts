@@ -49,6 +49,11 @@ export class UserService {
   populate() {
     // If JWT detected, attempt to get & store user's info
     if (
+      localStorage.getItem('profile') !== 'undefined' &&
+      localStorage.getItem('profile') !== null
+    ) {
+      this.setAuth(JSON.parse(String(localStorage.getItem('profile'))));
+    } else if (
       this.jwtService.getToken() &&
       typeof this.jwtService.getToken() !== 'undefined'
     ) {
@@ -91,7 +96,8 @@ export class UserService {
 
   setAuth(user: User) {
     // Save JWT sent from server in local storage
-    this.jwtService.saveToken(user.token);
+    localStorage.setItem('profile', JSON.stringify(user));
+    user.token && this.jwtService.saveToken(user.token);
     // Set current user data into observable
     this.currentUserSubject.next(user);
     // Set isAuthenticated to true
@@ -106,6 +112,7 @@ export class UserService {
   purgeAuth() {
     // Remove JWT from local storage
     this.jwtService.destroyToken();
+    localStorage.removeItem('profile');
     // Set current user to an empty object
     this.currentUserSubject.next({} as User);
     // Set auth status to false
@@ -122,7 +129,7 @@ export class UserService {
     return this.apiService.post('/Identity' + route, { ...credentials }).pipe(
       map((response) => {
         if (response.data !== null) {
-          this.jwtService.saveToken(response.data);
+          this.setAuth({ ...response.data, token: response.token });
           // this.populate();
         }
         return response;
@@ -148,7 +155,12 @@ export class UserService {
   getServices(): Observable<any> {
     return this.apiService.get('/api/Service/GetAll');
   }
-
+  // get user profile...
+  getUserProfile(profileId: string): Observable<any> {
+    return this.apiService.get(
+      '/api/UserProfile/Profile?ProfileId=' + profileId
+    );
+  }
   // save no of pets...
   saveNoOfPets(numberOfPet: number, id: string): Observable<any> {
     return this.apiService.put('/api/UserProfile/Update', { numberOfPet, id });

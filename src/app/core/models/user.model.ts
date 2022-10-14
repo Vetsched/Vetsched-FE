@@ -5,4 +5,5 @@ export interface User {
     address: string;
     name: string;
     phone: string;
+    profileId: string;
 }

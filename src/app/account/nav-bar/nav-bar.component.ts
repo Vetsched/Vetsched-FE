@@ -10,10 +10,13 @@ export class NavBarComponent implements OnInit {
   currentUser: any = {};
   constructor(private service: UserService) {}
   ngOnInit(): void {
-    // this.service.currentUser.subscribe((x) => {
-    //   if (x.token !== null) {
-    //     this.currentUser = x;
-    //   }
-    // });
+    this.service.currentUser.subscribe((x) => {
+      if (x.token !== null) {
+        this.currentUser = x;
+      }
+    });
+  }
+  logout(): void {
+    this.service.purgeAuth();
   }
 }

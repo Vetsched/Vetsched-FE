@@ -60,7 +60,7 @@ export class SignUpComponent implements OnInit {
     };
     this.service.signup({ ...user }).subscribe((response) => {
       if (response.token !== null) {
-        this.currentTab = 'email';
+        this.currentTab = 'service'; // email
         this.service.setAuth({ ...response.data, token: response.token });
       } else {
         btn.disabled = false;

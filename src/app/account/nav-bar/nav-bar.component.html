@@ -30,7 +30,7 @@
       </div>
       <div class="customDropdown profileDropDown dropdown">
         <button id="profileDropDown" data-toggle="dropdown">
-          <span>Dr Sansa Stark</span>
+          <span>{{currentUser.name}}</span>
           <div class="profileImg">
             <img src="assets/images/profileImg.png" alt="" />
           </div>
@@ -45,7 +45,7 @@
             </svg>
             Profile
           </a>
-          <a class="dropdown-item">
+          <a class="dropdown-item" (click)="logout()">
             <svg class="text danger" viewBox="0 0 17 18">
               <use xlink:href="#logOut"></use>
             </svg>
