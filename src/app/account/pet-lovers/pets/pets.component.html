@@ -33,13 +33,13 @@
 <div class="row" *ngIf="!pets || pets.length === 0">
   <div class="col-12 col-md-10 col-lg-8 mx-auto">
     <div class="notFound">
-      <img src="assets/images/noPetLover.png" alt="" />
-      <p>No Pet</p>
+      <img src="assets/images/noPetLover.png" alt="No Pet Image" />
+      <p>No Pets Found</p>
     </div>
   </div>
 </div>
 <div class="addMoreWrapper">
-  <a class="addMore" data-toggle="modal" data-target="#addPet">+</a>
+  <a class="addMore text-light" role="button" data-toggle="modal" data-target="#addPet">+</a>
 </div>
 
 <app-add-pet></app-add-pet>

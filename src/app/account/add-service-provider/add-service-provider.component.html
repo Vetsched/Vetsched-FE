@@ -1,1 +1,24 @@
-<p>add-service-provider works!</p>
+<div class="row">
+  <div class="col-md-3">
+    <a class="myBtn square mt-3" [routerLink]="['/account']"
+      ><svg viewBox="0 0 28 28">
+        <use xlink:href="#backArrow"></use>
+      </svg>
+    </a>
+  </div>
+  <div class="col-md-9 text-right">
+    <h1 class="mainHeading">Service Providers</h1>
+  </div>
+  <div
+    class="col-12 col-md-6"
+    *ngFor="let serviceProvider of serviceProviders; let i = index"
+  >
+    <app-provider
+      [serviceProvider]="serviceProvider"
+      [index]="i"
+      [sendRequest]="true"
+      (request)="sendRequestToProvider($event)"
+    ></app-provider>
+  </div>
+</div>
+<app-send-request></app-send-request>

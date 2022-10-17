@@ -1,6 +1,10 @@
 <div class="customCard">
   <div class="cardImg">
-    <img src="assets/images/docImg-1.png" alt="" />
+    <img
+      [src]="serviceProvider.profileImage"
+      (error)="serviceProvider.profileImage = 'assets/images/user.png'"
+      [alt]="serviceProvider.name"
+    />
   </div>
   <div class="cardContent">
     <div>
@@ -8,9 +12,9 @@
         {{ serviceProvider.name }}
         <a
           class="text danger"
-          href="javascript:void(0)"
           data-toggle="modal"
           data-target="#confirmDelete"
+          *ngIf="!sendRequest"
         >
           <svg viewBox="0 0 20 22">
             <use xlink:href="#delete"></use>
@@ -20,10 +24,17 @@
       <a [href]="'tel:' + serviceProvider.phone" class="text primary">{{
         serviceProvider.phone
       }}</a>
-      <p class="text primary">specialization</p>
-      <p>
+      <p class="text primary">
         {{ serviceProvider.services && serviceProvider.services.join(",") }}
       </p>
+      <p><i class="fa fa-map-marker"></i> {{ serviceProvider.address }}</p>
+      <a
+        class="myBtn btnSm pull-right text-light"
+        *ngIf="sendRequest"
+        (click)="sendRequestToProvider()"
+      >
+        Send Request
+      </a>
     </div>
   </div>
 </div>

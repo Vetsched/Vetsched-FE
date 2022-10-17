@@ -7,17 +7,15 @@ import { UserService } from 'src/app/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  currentUser:any = {
-    profileType : 1
-  };
+  currentUser:any = {};
   constructor(private service : UserService) { }
 
   ngOnInit(): void {
-    // this.service.currentUser.subscribe((x) => {
-    //   if (x.token !== null) {
-    //     this.currentUser = x;
-    //   }
-    // });
+    this.service.currentUser.subscribe((x) => {
+      if (x.token !== null) {
+        this.currentUser = x;
+      }
+    });
   }
 
 }

@@ -1,0 +1,28 @@
+<div class="modal fade" id="sendRequestModal">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content customModal">
+      <div class="modal-body">
+        <h2 class="modalTitle">Choose Your Pets</h2>
+        <div class="formDesign">
+          <div class="row" *ngIf="pets && pets.length > 0">
+            <div
+              class="col-12 col-md-6"
+              *ngFor="let pet of pets; let i = index"
+            >
+              <app-pet [pet]="pet" [index]="i"></app-pet>
+            </div>
+          </div>
+
+          <div class="row" *ngIf="!pets || pets.length === 0">
+            <div class="col-12 col-md-10 col-lg-8 mx-auto">
+              <div class="notFound">
+                <img src="assets/images/noPetLover.png" alt="No Pet Image" />
+                <p>No Pets Found</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,10 @@
 <div class="customCard">
   <div class="cardImg">
-    <img src="assets/images/petImg-1.png" alt="" />
+    <img
+      [src]="pet.image"
+      (error)="pet.image = 'assets/images/petImg-1.png'"
+      [alt]="pet.name"
+    />
   </div>
   <div class="cardContent">
     <div>

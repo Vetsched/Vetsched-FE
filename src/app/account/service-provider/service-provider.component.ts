@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/core';
 
 @Component({
   selector: 'app-service-provider',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServiceProviderComponent implements OnInit {
   petLovers:any = [];
-  constructor() { }
+  currentUser: any = {};
+  constructor(private service: UserService) { }
 
   ngOnInit(): void {
+    this.service.currentUser.subscribe(x => {
+      this.currentUser = x;
+      if (x.token !== null) {
+        this.getConnectedPetLovers();
+      }
+    })
   }
-
+  getConnectedPetLovers(): void {
+    this.service.getConnectedPetLovers(this.currentUser.id).subscribe((x:any) => {
+      if (x.statusCode == 200) {
+        this.petLovers = x.data;
+      }
+    });
+  }
 }

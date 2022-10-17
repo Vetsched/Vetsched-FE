@@ -6,7 +6,7 @@
         <button class="myBtn square" data-dismiss="modal">x</button>
       </div>
       <div class="modal-body">
-        <div class="formDesing">
+        <div class="formDesing" [formGroup]="form">
           <div>
             <div class="updateProfile">
               <div class="profileImg">
@@ -26,34 +26,79 @@
                 </div>
               </div>
             </div>
-            <div class="form-group">
-              <label for="">Service</label>
-              <select class="form-control">
-                <option value="1">Option 1</option>
-                <option value="1">Option 2</option>
-                <option value="1">Option 3</option>
-                <option value="1">Option 4</option>
-              </select>
-            </div>
             <div class="row">
               <div class="col-12 col-md-6">
                 <div class="form-group">
-                  <label for="">Name</label>
+                  <label for="">Name *</label>
                   <input
                     class="form-control"
                     type="text"
-                    placeholder="Parrot "
+                    placeholder="Parrot"
+                    formControlName="name"
+                    name="name"
+                    [ngClass]="{
+                      redBorder:
+                        form.controls['name'].invalid &&
+                        (form.controls['name'].dirty ||
+                          form.controls['name'].touched)
+                    }"
                   />
                 </div>
               </div>
               <div class="col-12 col-md-6">
                 <div class="form-group">
-                  <label for="">Breed</label>
+                  <label for="">Breed *</label>
                   <input
                     class="form-control"
                     type="text"
                     placeholder="Blue-Yellow Ara"
+                    name="breed"
+                    formControlName="breed"
+                    [ngClass]="{
+                      redBorder:
+                        form.controls['breed'].invalid &&
+                        (form.controls['breed'].dirty ||
+                          form.controls['breed'].touched)
+                    }"
                   />
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <label for="">Species *</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Enter Species"
+                    name="species"
+                    formControlName="sepcies"
+                    [ngClass]="{
+                      redBorder:
+                        form.controls['sepcies'].invalid &&
+                        (form.controls['sepcies'].dirty ||
+                          form.controls['sepcies'].touched)
+                    }"
+                  />
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-group row mt-5">
+                  <div class="col-md-6">
+                    <input
+                      type="radio"
+                      name="type"
+                      (click)="form.patchValue({ title: 1 })"
+                    />
+                    Spayed
+                  </div>
+                  <div class="col-md-6">
+                    <input
+                      type="radio"
+                      name="type"
+                      (click)="form.patchValue({ title: 2 })"
+                    />
+                    Neuter
+                  </div>
                 </div>
               </div>
               <div class="col-12 col-md-6">
@@ -63,17 +108,35 @@
                       <label for="">Age</label>
                       <input
                         class="form-control"
-                        type="text"
-                        placeholder="YYYY-MM-DD"
+                        type="number"
+                        name="age"
+                        placeholder="1"
+                        formControlName="age"
+                        [ngClass]="{
+                          redBorder:
+                            form.controls['age'].invalid &&
+                            (form.controls['age'].dirty ||
+                              form.controls['age'].touched)
+                        }"
                       />
                     </div>
                   </div>
                   <div class="col-6">
                     <div class="form-group">
                       <label for="">Sex</label>
-                      <select class="form-control">
-                        <option value="1">Male</option>
-                        <option value="1">Female</option>
+                      <select
+                        class="form-control"
+                        name="sex"
+                        formControlName="sex"
+                        [ngClass]="{
+                          redBorder:
+                            form.controls['sex'].invalid &&
+                            (form.controls['sex'].dirty ||
+                              form.controls['sex'].touched)
+                        }"
+                      >
+                        <option [value]="1">Male</option>
+                        <option [value]="2">Female</option>
                       </select>
                     </div>
                   </div>
@@ -84,62 +147,108 @@
                   <div class="col-6">
                     <div class="form-group">
                       <label for="">Microchiped</label>
-                      <select class="form-control">
-                        <option value="true">Yes</option>
-                        <option value="false">No</option>
+                      <select
+                        class="form-control"
+                        formControlName="microchiped"
+                        name="microchiped"
+                        [ngClass]="{
+                          redBorder:
+                            form.controls['microchiped'].invalid &&
+                            (form.controls['microchiped'].dirty ||
+                              form.controls['microchiped'].touched)
+                        }"
+                      >
+                        <option [value]="true">Yes</option>
+                        <option [value]="false">No</option>
                       </select>
                     </div>
                   </div>
                   <div class="col-6">
                     <div class="form-group">
                       <label for="">Vaccination</label>
-                      <select class="form-control">
-                        <option value="true">Yes</option>
-                        <option value="false">No</option>
+                      <select
+                        class="form-control"
+                        formControlName="vaccination"
+                        name="vaccination"
+                      >
+                        <option [value]="true">Yes</option>
+                        <option [value]="false">No</option>
                       </select>
                     </div>
                   </div>
                 </div>
               </div>
-
               <div class="col-12 col-md-6">
                 <div class="form-group">
-                  <label for="">Vaccine</label>
-                  <input
-                    class="form-control"
-                    type="text"
-                    placeholder="Enter Vaccine Name "
-                  />
-                </div>
-              </div>
-              <div class="col-12 col-md-6">
-                <div class="form-group">
-                  <label for="">Allergies</label>
+                  <label for="">Allergies (Including Vaccine)</label>
                   <input
                     class="form-control"
                     type="text"
                     placeholder="Allergy if any"
+                    formControlName="allergies"
                   />
                 </div>
               </div>
               <div class="col-12 col-md-6">
                 <div class="form-group">
-                  <label for="">Current/Pervious Medication</label>
+                  <label for="">Current Medication Prescribed if any</label>
                   <input
                     class="form-control"
                     type="text"
-                    placeholder="Medications"
+                    placeholder="Enter Medications"
+                    name="medications"
+                    formControlName="medications"
                   />
                 </div>
               </div>
               <div class="col-12 col-md-6">
                 <div class="form-group">
-                  <label for="">Last visit to Vet & Reason</label>
+                  <label for="">Vaccine Received</label>
                   <input
                     class="form-control"
                     type="text"
-                    placeholder="Enter Last Visit"
+                    name="vaccineReceived"
+                    placeholder="Enter Vaccine Name "
+                    formControlName="vaccineRecieved"
                   />
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <label for="">Vaccine Due</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Enter Vaccine Name "
+                    name="dueVaccine"
+                    formControlName="dueVaccine"
+                  />
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-group" style="height: 100%">
+                  <label for=""
+                    >Last visit to Vet & Hospital and reason for visit</label
+                  >
+                  <textarea
+                    class="form-control"
+                    style="height: calc(100% - 24.5px)"
+                    placeholder="Enter Visit"
+                    name="lastVisit"
+                    formControlName="lastVistDescription"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-group" style="height: 100%">
+                  <label for="">Previous Medical History</label>
+                  <textarea
+                    class="form-control"
+                    style="height: calc(100% - 24.5px)"
+                    placeholder="Enter Previous Medical History eg issues, diabetes etc."
+                    name="medicalHistory"
+                    formControlName="previousMedical"
+                  ></textarea>
                 </div>
               </div>
               <div class="col-12 col-md-6">
@@ -149,11 +258,13 @@
                     class="form-control"
                     style="height: calc(100% - 24.5px)"
                     placeholder="Detail"
+                    name="details"
+                    formControlName="details"
                   ></textarea>
                 </div>
               </div>
-              <div class="col-12 col-md-6">
-                <label for="">Details</label>
+              <div class="col-12 col-md-6 form-group">
+                <label>Attach Docs</label>
                 <div class="uploadWrapper">
                   <input type="file" />
                   <div class="icon">
@@ -166,6 +277,14 @@
                     <b class="text primary">Click to add Pet image</b>
                   </h2>
                 </div>
+              </div>
+              <div class="col-md-12 text-center">
+                <a
+                  class="myBtn btnSm pull-right text-light"
+                  id="petSaveBtn"
+                  (click)="save()"
+                  >Save</a
+                >
               </div>
             </div>
           </div>

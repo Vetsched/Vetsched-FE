@@ -1,11 +1,15 @@
 <div class="customCard">
   <div class="cardImg">
-    <img src="assets/images/userImg-1.png" alt="" />
+    <img
+      [src]="petLover.profileImage"
+      (error)="petLover.profileImage = 'assets/images/user.png'"
+      [alt]="petLover.name"
+    />
   </div>
   <div class="cardContent">
     <div>
       <h1 class="cardTitle">
-        Pet Lover
+        {{ petLover.name }}
         <a
           class="text danger"
           href="javascript:void(0)"
@@ -17,13 +21,17 @@
           </svg>
         </a>
       </h1>
-      <a href="tel:+9123456789" class="text primary">+9123456789</a>
-      <p>Lorem ipsum dolor sit amet, adipiscing elit. Odio leo ipsum netus .</p>
+      <a href="tel:{{ petLover.phone }}" class="text primary">{{
+        petLover.phone
+      }}</a>
+      <p>{{ petLover.address }}</p>
       <p class="text primary">
         <b>No of Pets:</b> <b class="text success">3</b>
       </p>
       <div class="cardAction">
-        <a href="mailto:peter12@gamil.com" class="text primary">+9123456789</a>
+        <a href="mailto:{{ petLover.email }}" class="text primary">{{
+          petLover.email
+        }}</a>
         <div>
           <a class="myBtn btnSm" href="javascript:void(0)">Message</a>
           <a

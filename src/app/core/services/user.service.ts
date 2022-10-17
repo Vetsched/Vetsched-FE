@@ -184,10 +184,56 @@ export class UserService {
     });
   }
 
+  // add pet....
+  addPet(pet: any): Observable<any> {
+    return this.apiService.post('/api/Pet/Add', pet);
+  }
+
   // get provider services....
   getProviderServices(profileId: string): Observable<any> {
     return this.apiService.get(
       '/api/Service/ProviderServices?ProfileId=' + profileId
     );
+  }
+
+  // get requests from pet lovers...
+  getRequestsFromPetLovers(profileId: string): Observable<any> {
+    return this.apiService.get(
+      '/api/UserFriends/Requests?ProfileId=' + profileId
+    );
+  }
+
+  // get Connected Pet Lovers...
+  getConnectedPetLovers(ServiceProviderId: string): Observable<any> {
+    return this.apiService.get(
+      '/api/UserFriends/ServiceProviders/Added?ServiceProviderId=' +
+        ServiceProviderId
+    );
+  }
+
+  // get Connected Service Providers...
+  getConnectedServiceProviders(PetLoverId: string): Observable<any> {
+    return this.apiService.get(
+      '/api/UserFriends/PetLovers/Added?PetLoverId=' + PetLoverId
+    );
+  }
+  // approve Request...
+  approveRequest(params: any): Observable<any> {
+    return this.apiService.put('/api/UserFriends/Requests/Accept', params);
+  }
+
+  // send Request...
+  sendRequest(params: any): Observable<any> {
+    return this.apiService.put('/api/UserFriends/Requests/Send', params);
+  }
+
+  // reject Request...
+  rejectRequest(params: any): Observable<any> {
+    return this.apiService.put('/api/UserFriends/Requests/Decline', params);
+  }
+
+  // get Service Providers...
+  getServiceProviders(): Observable<any> {
+    return this.apiService.get('/api/UserFriends/PetLovers/Suggestion');
   }
 }
