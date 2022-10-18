@@ -20,7 +20,7 @@ export class RequestsComponent implements OnInit {
   }
   loadRequests(): void {
     this.service.getRequestsFromPetLovers(this.currentUser.profileId).subscribe(x => {
-      this.requests = x;
+      this.requests = x.data;
     });
   }
 }
