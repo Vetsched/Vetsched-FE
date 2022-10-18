@@ -36,5 +36,14 @@ export class ViewProfileComponent implements OnInit {
     }
     const btn: any = document.getElementById('saveProfileBtn');
     btn.disabled = true;
+    this.service
+      .updateProfile({ ...this.profileForm.value, id: this.currentUser.id })
+      .subscribe((x: any) => {
+        if (x) {
+          this.service.addToast('success', 'Profile updated successfully');
+        } else {
+          this.service.addToast('error', 'Some thing went wrong!');
+        }
+      });
   }
 }

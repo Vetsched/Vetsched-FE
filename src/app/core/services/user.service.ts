@@ -161,6 +161,10 @@ export class UserService {
       '/api/UserProfile/Profile?ProfileId=' + profileId
     );
   }
+  // update user profile...
+  updateProfile(profile: any): Observable<any> {
+    return this.apiService.put('/api/UserProfile/Update', profile);
+  }
   // save no of pets...
   saveNoOfPets(numberOfPet: number, id: string): Observable<any> {
     return this.apiService.put('/api/UserProfile/Update', { numberOfPet, id });
