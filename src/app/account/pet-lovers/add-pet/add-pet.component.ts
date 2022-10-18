@@ -44,13 +44,25 @@ export class AddPetComponent implements OnInit {
     }
     const btn: any = document.getElementById('petSaveBtn');
     btn.disabled = true;
+    const obj = {
+      name: this.form.value.name,
+      title: this.form.value.title,
+      breed: this.form.value.breed,
+      sepcies: this.form.value.sepcies,
+      age: this.form.value.age,
+      sex: Number(this.form.value.sex),
+      microchiped: this.form.value.microchiped === 'true' ? true : false,
+      vaccination: this.form.value.vaccination === 'true' ? true : false,
+      vaccineRecieved: this.form.value.vaccineRecieved,
+      dueVaccine: this.form.value.dueVaccine,
+      lastVistDescription: this.form.value.lastVistDescription,
+      previousMedical: this.form.value.previousMedical,
+      // allergies: { additionalProp1: [this.form.value.allergies] },
+      // medications: { additionalProp1: [this.form.value.medications] },
+      // details: { additionalProp1: [this.form.value.details] },
+    };
     this.service
-      .addPet({
-        ...this.form.value,
-        sex: Number(this.form.value.sex),
-        microchiped: this.form.value.microchiped === 'true' ? true : false,
-        vaccination: this.form.value.vaccination === 'true' ? true : false,
-      })
+      .addPet(obj)
       .subscribe((response: any) => {
         if (response.data) {
           this.service.addToast(

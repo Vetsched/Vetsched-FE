@@ -179,9 +179,7 @@ export class UserService {
 
   // get pets....
   getPets(PetLoverId: string): Observable<any> {
-    return this.apiService.post('/api/Pet/Pets', {
-      PetLoverId,
-    });
+    return this.apiService.get('/api/Pet/Pets?PetLoverId=' + PetLoverId);
   }
 
   // add pet....
