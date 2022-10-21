@@ -12,18 +12,15 @@
         {{ pet.name | titlecase }}
         <div class="customDropdown dropdown" *ngIf="!showSelect">
           <a id="petAction" data-toggle="dropdown">
-            <svg viewBox="0 0 4 18">
-              <use xlink:href="#eclipses"></use>
-            </svg>
+            <i class="fa fa-ellipsis-v"></i>
           </a>
           <div
             class="dropdown-menu dropdown-menu-right"
             aria-labelledby="petAction"
           >
-            <a class="dropdown-item" href="#"> Edit </a>
+            <a class="dropdown-item"> Edit </a>
             <a
               class="dropdown-item text danger"
-              href="#"
               data-toggle="modal"
               data-target="#confirmDelete"
             >
@@ -61,6 +58,23 @@
         >
           Select
         </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="confirmDelete">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content customModal">
+      <div class="modal-body">
+        <h2 class="modalTitle">Are you sure you want to Delete?</h2>
+        <div class="formDesign">
+          <div class="text-right">
+            <a class="myBtn btnSm" (click)="removePet()" data-dismiss="modal"
+              >Yes</a
+            >
+            <a class="myBtn btnSm simple" data-dismiss="modal">No</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -191,6 +191,11 @@ export class UserService {
     return this.apiService.post('/api/Pet/Add', pet);
   }
 
+  // remove pet....
+  removePet(PetId: string): Observable<any> {
+    return this.apiService.delete('/api/Pet/Remove?PetId=' + PetId);
+  }
+
   // get provider services....
   getProviderServices(profileId: string): Observable<any> {
     return this.apiService.get(

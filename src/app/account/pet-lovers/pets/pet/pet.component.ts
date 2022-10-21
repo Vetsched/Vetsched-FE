@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { UserService } from 'src/app/core';
 
 @Component({
   selector: 'app-pet',
@@ -11,7 +12,8 @@ export class PetComponent implements OnInit {
   @Input() index: number | undefined;
   @Output() viewPet = new EventEmitter();
   @Output() selected = new EventEmitter();
-  constructor() {}
+  @Output() refresh = new EventEmitter();
+  constructor(private service: UserService) {}
 
   ngOnInit(): void {}
   view(): void {
@@ -19,5 +21,18 @@ export class PetComponent implements OnInit {
   }
   select(): void {
     this.selected.emit(true);
+  }
+  removePet(): void {
+    this.service.removePet(this.pet.id).subscribe((x) => {
+      if (x) {
+        this.service.addToast('success', 'Pet deleted successfully');
+        this.refresh.emit(true);
+      } else {
+        this.service.addToast(
+          'error',
+          'Something went wrong, please try again'
+        );
+      }
+    });
   }
 }
