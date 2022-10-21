@@ -20,7 +20,7 @@ export class ServiceProviderComponent implements OnInit {
     })
   }
   getConnectedPetLovers(): void {
-    this.service.getConnectedPetLovers(this.currentUser.id).subscribe((x:any) => {
+    this.service.getConnectedPetLovers(this.currentUser.profileId).subscribe((x:any) => {
       if (x.statusCode == 200) {
         this.petLovers = x.data;
       }

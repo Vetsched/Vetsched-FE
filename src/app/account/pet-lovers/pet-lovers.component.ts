@@ -19,7 +19,7 @@ export class PetLoversComponent implements OnInit {
     })
   }
   getServiceProviders(): void {
-    this.service.getConnectedServiceProviders(this.currentUser.id).subscribe((x:any) => {
+    this.service.getConnectedServiceProviders(this.currentUser.profileId).subscribe((x:any) => {
       this.serviceProviders = x.data;
     });
   }
