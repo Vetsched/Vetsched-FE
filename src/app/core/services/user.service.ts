@@ -187,8 +187,15 @@ export class UserService {
   }
 
   // add pet....
-  addPet(pet: any): Observable<any> {
-    return this.apiService.post('/api/Pet/Add', pet);
+  addPet(pet: any, PetId: string): Observable<any> {
+    if (PetId !== '') {
+      return this.apiService.put('/api/Pet/Update?PetId=' + PetId, {
+        ...pet,
+        id: PetId,
+      });
+    } else {
+      return this.apiService.post('/api/Pet/Add', pet);
+    }
   }
 
   // remove pet....

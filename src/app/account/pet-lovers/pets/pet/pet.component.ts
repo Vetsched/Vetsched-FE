@@ -13,6 +13,7 @@ export class PetComponent implements OnInit {
   @Output() viewPet = new EventEmitter();
   @Output() selected = new EventEmitter();
   @Output() refresh = new EventEmitter();
+  @Output() edit = new EventEmitter();
   constructor(private service: UserService) {}
 
   ngOnInit(): void {}
@@ -34,5 +35,8 @@ export class PetComponent implements OnInit {
         );
       }
     });
+  }
+  editPet(): void {
+    this.edit.emit(true);
   }
 }

@@ -31,6 +31,7 @@
       [index]="i"
       (viewPet)="viewPet(pet)"
       (refresh)="getPets()"
+      (edit)="editPet(pet)"
     ></app-pet>
   </div>
 </div>
@@ -53,5 +54,5 @@
   >
 </div>
 
-<app-add-pet (success)="getPets()"></app-add-pet>
+<app-add-pet [pet]="pet" (success)="getPets()"></app-add-pet>
 <app-view-pet [pet]="pet" *ngIf="pet"></app-view-pet>

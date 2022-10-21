@@ -18,7 +18,7 @@
             class="dropdown-menu dropdown-menu-right"
             aria-labelledby="petAction"
           >
-            <a class="dropdown-item"> Edit </a>
+            <a class="dropdown-item" (click)="editPet()"> Edit </a>
             <a
               class="dropdown-item text danger"
               data-toggle="modal"
@@ -69,7 +69,10 @@
         <h2 class="modalTitle">Are you sure you want to Delete?</h2>
         <div class="formDesign">
           <div class="text-right">
-            <a class="myBtn btnSm" (click)="removePet()" data-dismiss="modal"
+            <a
+              class="myBtn btnSm text-light"
+              (click)="removePet()"
+              data-dismiss="modal"
               >Yes</a
             >
             <a class="myBtn btnSm simple" data-dismiss="modal">No</a>

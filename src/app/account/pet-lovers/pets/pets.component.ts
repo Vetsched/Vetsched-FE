@@ -29,4 +29,8 @@ export class PetsComponent implements OnInit {
     this.pet = pet;
     $('#viewPet').modal('show');
   }
+  editPet(pet: any): void {
+    this.pet = pet;
+    $('#addPet').modal('show');
+  }
 }
