@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/core';
 
@@ -10,6 +10,7 @@ import { UserService } from 'src/app/core';
 export class AddPetComponent implements OnInit {
   currentUser: any = {};
   form: FormGroup;
+  @Output() success = new EventEmitter();
   constructor(private service: UserService, private fb: FormBuilder) {
     this.form = this.fb.group({
       name: ['', Validators.required],
@@ -57,27 +58,28 @@ export class AddPetComponent implements OnInit {
       dueVaccine: this.form.value.dueVaccine,
       lastVistDescription: this.form.value.lastVistDescription,
       previousMedical: this.form.value.previousMedical,
-      // allergies: { additionalProp1: [this.form.value.allergies] },
-      // medications: { additionalProp1: [this.form.value.medications] },
-      // details: { additionalProp1: [this.form.value.details] },
+      profileId: this.currentUser.profileId,
+      allergies: { list: [this.form.value.allergies] },
+      medications: { list: [this.form.value.medications] },
+      details: { obj: this.form.value.details },
     };
-    this.service
-      .addPet(obj)
-      .subscribe((response: any) => {
-        if (response.data) {
-          this.service.addToast(
-            'success',
-            response.statusMessage || 'Something went wrong, please try again',
-            ''
-          );
-        } else {
-          btn.disabled = false;
-          this.service.addToast(
-            'error',
-            response.statusMessage || 'Something went wrong, please try again',
-            ''
-          );
-        }
-      });
+    this.service.addPet(obj).subscribe((response: any) => {
+      if (response) {
+        this.service.addToast(
+          'success',
+          response.statusMessage || 'Pet Added Successfully!',
+          ''
+        );
+        this.success.emit(true);
+        $('#addPet').modal('hide');
+      } else {
+        btn.disabled = false;
+        this.service.addToast(
+          'error',
+          response.statusMessage || 'Something went wrong, please try again',
+          ''
+        );
+      }
+    });
   }
 }

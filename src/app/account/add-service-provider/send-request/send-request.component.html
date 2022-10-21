@@ -9,7 +9,7 @@
               class="col-12 col-md-6"
               *ngFor="let pet of pets; let i = index"
             >
-              <app-pet [pet]="pet" [index]="i"></app-pet>
+              <app-pet [pet]="pet" [index]="i" [showSelect]="true" (selected)="sendRequest(pet)"></app-pet>
             </div>
           </div>
 

@@ -226,7 +226,7 @@ export class UserService {
 
   // send Request...
   sendRequest(params: any): Observable<any> {
-    return this.apiService.put('/api/UserFriends/Requests/Send', params);
+    return this.apiService.post('/api/UserFriends/Requests/Send', params);
   }
 
   // reject Request...
@@ -237,5 +237,10 @@ export class UserService {
   // get Service Providers...
   getServiceProviders(): Observable<any> {
     return this.apiService.get('/api/UserFriends/PetLovers/Suggestion');
+  }
+
+  // assign pet provider...
+  assignPetToProvider(params: any): Observable<any> {
+    return this.apiService.post('/api/Pet/Assign', params);
   }
 }

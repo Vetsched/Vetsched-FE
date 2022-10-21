@@ -9,6 +9,7 @@ import { UserService } from 'src/app/core';
 export class PetsComponent implements OnInit {
   pets: any = [];
   currentUser: any = {};
+  pet: any = {};
   constructor(private service: UserService) {}
 
   ngOnInit(): void {
@@ -20,8 +21,12 @@ export class PetsComponent implements OnInit {
     this.getPets();
   }
   getPets(): void {
-    this.service.getPets(this.currentUser.id).subscribe((x: any) => {
+    this.service.getPets(this.currentUser.profileId).subscribe((x: any) => {
       this.pets = x;
     });
+  }
+  viewPet(pet: any): void {
+    this.pet = pet;
+    $('#viewPet').modal('show');
   }
 }

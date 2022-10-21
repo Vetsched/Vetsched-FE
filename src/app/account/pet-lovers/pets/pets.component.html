@@ -26,7 +26,7 @@
 </div>
 <div class="row" *ngIf="pets && pets.length > 0">
   <div class="col-12 col-md-6" *ngFor="let pet of pets; let i = index">
-    <app-pet [pet]="pet" [index]="i"></app-pet>
+    <app-pet [pet]="pet" [index]="i" (viewPet)="viewPet(pet)"></app-pet>
   </div>
 </div>
 
@@ -39,7 +39,14 @@
   </div>
 </div>
 <div class="addMoreWrapper">
-  <a class="addMore text-light" role="button" data-toggle="modal" data-target="#addPet">+</a>
+  <a
+    class="addMore text-light"
+    role="button"
+    data-toggle="modal"
+    data-target="#addPet"
+    >+</a
+  >
 </div>
 
-<app-add-pet></app-add-pet>
+<app-add-pet (success)="getPets()"></app-add-pet>
+<app-view-pet [pet]="pet" *ngIf="pet"></app-view-pet>

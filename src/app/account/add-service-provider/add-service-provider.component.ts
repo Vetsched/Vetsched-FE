@@ -9,6 +9,7 @@ import { UserService } from 'src/app/core';
 export class AddServiceProviderComponent implements OnInit {
   serviceProviders: any = [];
   currentUser: any = {};
+  selectedProvider: any = {};
   constructor(private service: UserService) {}
   ngOnInit(): void {
     this.service.currentUser.subscribe((x) => {
@@ -25,5 +26,6 @@ export class AddServiceProviderComponent implements OnInit {
   }
   sendRequestToProvider(provider: any): void {
     $('#sendRequestModal').modal('show');
+    this.selectedProvider = provider;
   }
 }

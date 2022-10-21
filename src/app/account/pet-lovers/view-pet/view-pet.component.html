@@ -54,20 +54,26 @@
                 <p>{{ pet.vaccineRecieved }}</p>
               </div>
             </div>
-            <div class="col-12 col-md-6">
+            <div
+              class="col-12 col-md-6"
+              *ngIf="pet.allergies && pet.allergies.list"
+            >
               <div class="profileDetails">
                 <span>Allergies</span> <br />
                 <span
                   class="badge primary"
-                  *ngFor="let allergy of pet.allergies"
+                  *ngFor="let allergy of pet.allergies.list"
                   >{{ allergy }}</span
                 >
               </div>
             </div>
-            <div class="col-12 col-md-6">
+            <div
+              class="col-12 col-md-6"
+              *ngIf="pet.medications && pet.medications.list"
+            >
               <div class="profileDetails">
                 <span>Current/Pervious Medication</span>
-                <p>No</p>
+                <p>{{ pet.medications.list[0] }}</p>
               </div>
             </div>
             <div class="col-12 col-md-6">
@@ -82,13 +88,11 @@
                 </p>
               </div>
             </div>
-            <div class="col-12">
+            <div class="col-12" *ngIf="pet.details && pet.details.obj">
               <div class="profileDetails">
                 <span>Detail</span>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-                  ut varius amet eget sed nulla. Tincidunt dis convallis rutrum
-                  at blandit neque cursus neque.
+                  {{ pet.details.obj }}
                 </p>
               </div>
             </div>

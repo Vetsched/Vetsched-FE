@@ -10,7 +10,7 @@
     <div>
       <h1 class="cardTitle">
         {{ pet.name | titlecase }}
-        <div class="customDropdown dropdown">
+        <div class="customDropdown dropdown" *ngIf="!showSelect">
           <a id="petAction" data-toggle="dropdown">
             <svg viewBox="0 0 4 18">
               <use xlink:href="#eclipses"></use>
@@ -48,12 +48,19 @@
       </p>
       <div class="cardAction">
         <a
-          class="myBtn btnSm ml-auto"
-          href="javascript:void(0)"
-          data-toggle="modal"
-          data-target="#viewPet"
-          >View</a
+          class="myBtn btnSm ml-auto text-light"
+          (click)="view()"
+          *ngIf="!showSelect"
         >
+          View
+        </a>
+        <a
+          class="myBtn btnSm ml-auto text-light"
+          (click)="select()"
+          *ngIf="showSelect"
+        >
+          Select
+        </a>
       </div>
     </div>
   </div>
