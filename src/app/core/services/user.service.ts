@@ -255,4 +255,9 @@ export class UserService {
   assignPetToProvider(params: any): Observable<any> {
     return this.apiService.post('/api/Pet/Assign', params);
   }
+
+  // remove friend...
+  removeFriend(params: any): Observable<any> {
+    return this.apiService.delete('/api/UserFriends/Requests/Remove', params);
+  }
 }

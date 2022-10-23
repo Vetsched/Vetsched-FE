@@ -42,17 +42,23 @@
 </div>
 <h1 class="mainHeading">Pet Lovers</h1>
 <div class="row" *ngIf="petLovers && petLovers.length > 0">
-  <div class="col-12 col-md-6" *ngFor="let petLover of petLovers; let i = index;">
-    <app-pet-lover [petLover]="petLover" [index]="i"></app-pet-lover>
+  <div
+    class="col-12 col-md-6"
+    *ngFor="let petLover of petLovers; let i = index"
+  >
+    <app-pet-lover
+      [petLover]="petLover"
+      [index]="i"
+      (refresh)="getConnectedPetLovers()"
+    ></app-pet-lover>
   </div>
 </div>
 
-
 <div class="row" *ngIf="!petLovers || petLovers.length === 0">
   <div class="col-12 col-md-10 col-lg-8 mx-auto">
-      <div class="notFound">
-          <img src="assets/images/noPetLover.png" alt="">
-          <p>Pet lover not available</p>
-      </div>
+    <div class="notFound">
+      <img src="assets/images/noPetLover.png" alt="" />
+      <p>Pet lover not available</p>
+    </div>
   </div>
 </div>
