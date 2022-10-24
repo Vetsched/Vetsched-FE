@@ -35,7 +35,7 @@
         <div>
           <a class="myBtn btnSm" href="javascript:void(0)">Message</a>
           <a
-            class="myBtn btnSm"
+            class="myBtn btnSm text-light"
             data-toggle="modal"
             data-target="#viewProfile"
             >View</a
@@ -53,7 +53,10 @@
         <h2 class="modalTitle">Are you sure you want to Delete?</h2>
         <div class="formDesign">
           <div class="text-right">
-            <a class="myBtn btnSm" data-dismiss="modal" (click)="delete()"
+            <a
+              class="myBtn btnSm text-light"
+              data-dismiss="modal"
+              (click)="delete()"
               >Yes</a
             >
             <a class="myBtn btnSm simple" data-dismiss="modal">No</a>
@@ -64,7 +67,7 @@
   </div>
 </div>
 
-<!-- <div class="modal fade" id="viewProfile">
+<div class="modal fade" id="viewProfile">
   <div class="modal-dialog modal-md modal-dialog-centered">
     <div class="modal-content customModal">
       <div class="modal-header">
@@ -72,25 +75,11 @@
         <button class="myBtn square" data-dismiss="modal">x</button>
       </div>
       <div class="modal-body">
-        <div class="formDesing" [formGroup]="profileForm">
+        <div class="formDesing">
           <div>
             <div class="updateProfile">
               <div class="profileImg">
                 <img src="assets/images/profileImg.png" alt="" />
-                <div class="customDropdown dropdown">
-                  <button id="profilePic" data-toggle="dropdown">
-                    <svg viewBox="0 0 12 12">
-                      <use xlink:href="#edit"></use>
-                    </svg>
-                  </button>
-                  <div
-                    class="dropdown-menu dropdown-menu-right"
-                    aria-labelledby="profilePic"
-                  >
-                    <a class="dropdown-item"> Upload Picture </a>
-                    <a class="dropdown-item"> Remove Picture </a>
-                  </div>
-                </div>
               </div>
             </div>
             <div class="form-group formIcon">
@@ -98,14 +87,8 @@
               <input
                 class="form-control"
                 type="text"
-                placeholder="Enter Name"
-                formControlName="name"
-                [ngClass]="{
-                  redBorder:
-                    profileForm.controls['name'].invalid &&
-                    (profileForm.controls['name'].dirty ||
-                      profileForm.controls['name'].touched)
-                }"
+                [value]="petLover.name"
+                readonly
               />
             </div>
             <div class="form-group formIcon">
@@ -113,34 +96,26 @@
               <input
                 class="form-control"
                 type="email"
-                placeholder="Enter Email"
-                formControlName="email"
-                [ngClass]="{
-                  redBorder:
-                    profileForm.controls['email'].invalid &&
-                    (profileForm.controls['email'].dirty ||
-                      profileForm.controls['email'].touched)
-                }"
+                [value]="petLover.email"
+                readonly
               />
             </div>
             <div class="form-group formIcon">
-              <label for="">Address</label>
+              <label for="">Phone</label>
               <input
                 class="form-control"
                 type="text"
-                placeholder="Enter Address"
-                formControlName="address"
+                [value]="petLover.phoneNumber"
+                readonly
               />
             </div>
           </div>
         </div>
 
         <div class="text-center">
-          <a class="myBtn btnSm text-light" (click)="save()" id="saveProfileBtn"
-            >Save</a
-          >
+          <a class="myBtn btnSm text-light" data-dismiss="modal">Close</a>
         </div>
       </div>
     </div>
   </div>
-</div> -->
+</div>

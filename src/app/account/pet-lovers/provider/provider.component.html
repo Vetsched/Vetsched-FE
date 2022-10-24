@@ -35,6 +35,16 @@
       >
         Send Request
       </a>
+
+      <div *ngIf="!sendRequest" class="text-right">
+        <a class="myBtn btnSm" href="javascript:void(0)">Message</a>
+        <a
+          class="myBtn btnSm text-light"
+          data-toggle="modal"
+          data-target="#viewProfile"
+          >View</a
+        >
+      </div>
     </div>
   </div>
 </div>
@@ -45,9 +55,67 @@
         <h2 class="modalTitle">Are you sure you want to Delete?</h2>
         <div class="formDesign">
           <div class="text-right">
-            <a class="myBtn btnSm" data-dismiss="modal" (click)="delete()">Yes</a>
+            <a
+              class="myBtn btnSm text-light"
+              data-dismiss="modal"
+              (click)="delete()"
+              >Yes</a
+            >
             <a class="myBtn btnSm simple" data-dismiss="modal">No</a>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="viewProfile">
+  <div class="modal-dialog modal-md modal-dialog-centered">
+    <div class="modal-content customModal">
+      <div class="modal-header">
+        <h2 class="mainHeading">Profile</h2>
+        <button class="myBtn square" data-dismiss="modal">x</button>
+      </div>
+      <div class="modal-body">
+        <div class="formDesing">
+          <div>
+            <div class="updateProfile">
+              <div class="profileImg">
+                <img src="assets/images/profileImg.png" alt="" />
+              </div>
+            </div>
+            <div class="form-group formIcon">
+              <label for="">Name</label>
+              <input
+                class="form-control"
+                type="text"
+                [value]="serviceProvider.name"
+                readonly
+              />
+            </div>
+            <div class="form-group formIcon">
+              <label for="">Email</label>
+              <input
+                class="form-control"
+                type="email"
+                [value]="serviceProvider.email"
+                readonly
+              />
+            </div>
+            <div class="form-group formIcon">
+              <label for="">Phone</label>
+              <input
+                class="form-control"
+                type="text"
+                [value]="serviceProvider.phoneNumber"
+                readonly
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <a class="myBtn btnSm text-light" data-dismiss="modal">Close</a>
         </div>
       </div>
     </div>
