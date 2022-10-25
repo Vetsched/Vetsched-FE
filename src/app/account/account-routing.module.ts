@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../core';
 import { AccountComponent } from './account.component';
 import { AddServiceProviderComponent } from './add-service-provider/add-service-provider.component';
+import { ChatComponent } from './chat/chat.component';
 import { HomeComponent } from './home/home.component';
 import { PetsComponent } from './pet-lovers/pets/pets.component';
 import { PetLoverPetsComponent } from './service-provider/pet-lover-pets/pet-lover-pets.component';
@@ -29,6 +30,10 @@ const routes: Routes = [
       {
         path: 'requests',
         component: RequestsComponent,
+      },
+      {
+        path: 'chat',
+        component: ChatComponent,
       },
       {
         path: 'pets/:PetLoverId',

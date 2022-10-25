@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../core';
+import { CometChat } from '@cometchat-pro/chat';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-sign-up',
@@ -60,6 +62,7 @@ export class SignUpComponent implements OnInit {
     };
     this.service.signup({ ...user }).subscribe((response) => {
       if (response.token !== null) {
+        this.signUpWithCometChat(response.data);
         this.currentTab = 'service'; // email
         this.service.setAuth({ ...response.data, token: response.token });
       } else {
@@ -71,6 +74,12 @@ export class SignUpComponent implements OnInit {
         );
       }
     });
+  }
+  signUpWithCometChat(data:any): void {
+    const authKey = environment.AUTH_KEY;
+    const user = new CometChat.User(data.id);
+    user.setName(data.name);
+    CometChat.createUser(user, authKey);
   }
   verifyEmail(): void {
     this.currentTab = 'service';
