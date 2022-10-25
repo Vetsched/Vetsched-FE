@@ -36,7 +36,7 @@ export class ApiService {
     return this.http
       .post(`${environment.api_url}${path}`, body, {
         headers: new HttpHeaders({
-          'Content-Type': 'multipart/form-data',
+          'no-header-file': 'yes',
         }),
       })
       .pipe(catchError(this.formatErrors));

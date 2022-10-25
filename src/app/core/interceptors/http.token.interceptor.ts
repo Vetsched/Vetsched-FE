@@ -27,7 +27,7 @@ export class HttpTokenInterceptor implements HttpInterceptor {
     if (token) {
       headersConfig['Authorization'] = `Token ${token}`;
     }
-    if (req.headers.has('Content-Type')) {
+    if (req.headers.has('no-header-file')) {
       return next.handle(req);
     }
     const request = req.clone({ setHeaders: headersConfig });

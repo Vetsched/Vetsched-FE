@@ -10,7 +10,11 @@
           <div>
             <div class="updateProfile">
               <div class="profileImg">
-                <img src="assets/images/profileImg.png" alt="" />
+                <img
+                  [src]="currentUser.profileImage"
+                  (error)="currentUser.profileImage = 'assets/images/user.png'"
+                  [alt]="currentUser.name"
+                />
                 <div class="customDropdown dropdown">
                   <button id="profilePic" data-toggle="dropdown">
                     <svg viewBox="0 0 12 12">
@@ -28,7 +32,9 @@
                       hidden
                       (change)="uploadFile($event)"
                     />
-                    <a class="dropdown-item" (click)="upload()"> Upload Picture </a>
+                    <a class="dropdown-item" (click)="upload()">
+                      Upload Picture
+                    </a>
                     <a class="dropdown-item"> Remove Picture </a>
                   </div>
                 </div>
