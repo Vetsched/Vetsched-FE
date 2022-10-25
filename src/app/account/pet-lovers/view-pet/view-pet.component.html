@@ -12,7 +12,7 @@
             <div class="profileImg">
               <img
                 [src]="pet.image"
-                (error)="pet.image = 'assets/images/petImg-1.png'"
+                (error)="pet.image = 'assets/images/user.png'"
                 [alt]="pet.name"
               />
             </div>
@@ -105,7 +105,8 @@
                 <div class="userImgName">
                   <div class="profileImg">
                     <img
-                      src="assets/images/profileImg.png"
+                      [src]="comment.image"
+                      (error)="comment.image = 'assets/images/user.png'"
                       [alt]="
                         comment.ServiceProvider && comment.ServiceProvider.name
                       "

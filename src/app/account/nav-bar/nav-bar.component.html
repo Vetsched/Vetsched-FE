@@ -32,7 +32,11 @@
         <button id="profileDropDown" data-toggle="dropdown">
           <span>{{ currentUser.name }}</span>
           <div class="profileImg">
-            <img src="assets/images/profileImg.png" alt="" />
+            <img
+              [src]="currentUser.image"
+              (error)="currentUser.image = 'assets/images/user.png'"
+              [alt]="currentUser.name"
+            />
           </div>
         </button>
         <div
@@ -45,7 +49,12 @@
             </svg>
             Profile
           </a>
-          <a class="dropdown-item" role="button" (click)="showServices()" *ngIf="currentUser.profileType === 2">
+          <a
+            class="dropdown-item"
+            role="button"
+            (click)="showServices()"
+            *ngIf="currentUser.profileType === 2"
+          >
             <i class="fa fa-list"></i>
             Services
           </a>

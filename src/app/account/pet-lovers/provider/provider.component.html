@@ -81,7 +81,11 @@
           <div>
             <div class="updateProfile">
               <div class="profileImg">
-                <img src="assets/images/profileImg.png" alt="" />
+                <img
+                  [src]="serviceProvider.image"
+                  (error)="serviceProvider.image = 'assets/images/user.png'"
+                  [alt]="serviceProvider.name"
+                />
               </div>
             </div>
             <div class="form-group formIcon">
