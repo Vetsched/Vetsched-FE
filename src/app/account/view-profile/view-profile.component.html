@@ -21,7 +21,14 @@
                     class="dropdown-menu dropdown-menu-right"
                     aria-labelledby="profilePic"
                   >
-                    <a class="dropdown-item"> Upload Picture </a>
+                    <input
+                      id="uploadFile"
+                      type="file"
+                      accept="image/jpeg,image/jpg,image/png"
+                      hidden
+                      (change)="uploadFile($event)"
+                    />
+                    <a class="dropdown-item" (click)="upload()"> Upload Picture </a>
                     <a class="dropdown-item"> Remove Picture </a>
                   </div>
                 </div>

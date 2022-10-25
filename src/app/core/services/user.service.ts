@@ -260,4 +260,9 @@ export class UserService {
   removeFriend(params: any): Observable<any> {
     return this.apiService.delete('/api/UserFriends/Requests/Remove', params);
   }
+
+  // upload picture...
+  uploadPicture(params: any): Observable<any> {
+    return this.apiService.postFd('/api/UserProfile/Picture/Upload', params);
+  }
 }

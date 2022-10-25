@@ -46,4 +46,16 @@ export class ViewProfileComponent implements OnInit {
         }
       });
   }
+  upload(): void {
+    $('#uploadFile').click();
+  }
+  uploadFile(event: any): void {
+    const files = event.target.files;
+    const fd: FormData = new FormData();
+    fd.append('ProfileId', this.currentUser.profileId);
+    fd.append('Picture', files[0], files[0].name);
+    this.service.uploadPicture(fd).subscribe((x: any) => {
+      console.log(x);
+    });
+  }
 }
