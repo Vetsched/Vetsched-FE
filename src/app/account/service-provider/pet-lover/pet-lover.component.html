@@ -1,5 +1,5 @@
 <div class="customCard">
-  <div class="cardImg">
+  <div class="cardImg" [routerLink]="['/account', 'pets', petLover.profileId]">
     <img
       [src]="petLover.profileImage"
       (error)="petLover.profileImage = 'assets/images/user.png'"
@@ -9,7 +9,9 @@
   <div class="cardContent">
     <div>
       <h1 class="cardTitle">
-        {{ petLover.name }}
+        <span [routerLink]="['/account', 'pets', petLover.profileId]">{{
+          petLover.name
+        }}</span>
         <a
           class="text danger"
           href="javascript:void(0)"

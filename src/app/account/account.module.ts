@@ -22,6 +22,7 @@ import { PetComponent } from './pet-lovers/pets/pet/pet.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServicesModalComponent } from './services-modal/services-modal.component';
 import { SendRequestComponent } from './add-service-provider/send-request/send-request.component';
+import { PetLoverPetsComponent } from './service-provider/pet-lover-pets/pet-lover-pets.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { SendRequestComponent } from './add-service-provider/send-request/send-r
     PetComponent,
     ServicesModalComponent,
     SendRequestComponent,
+    PetLoverPetsComponent,
   ],
   imports: [CommonModule, AccountRoutingModule, 
     FormsModule,

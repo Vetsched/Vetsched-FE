@@ -5,6 +5,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
+import { UserService } from 'src/app/core';
 
 @Component({
   selector: 'app-view-pet',
@@ -13,9 +14,17 @@ import {
 })
 export class ViewPetComponent implements OnInit, OnChanges {
   @Input() pet: any = {};
-  constructor() {}
+  comments: any = [];
+  constructor(private service: UserService) {}
   ngOnChanges(changes: SimpleChanges): void {
     this.ngOnInit();
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getComments();
+  }
+  getComments(): void {
+    this.service
+      .getComment(this.pet.id, '')
+      .subscribe((x) => (this.comments = x));
+  }
 }

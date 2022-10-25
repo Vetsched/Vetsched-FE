@@ -5,6 +5,7 @@ import { AccountComponent } from './account.component';
 import { AddServiceProviderComponent } from './add-service-provider/add-service-provider.component';
 import { HomeComponent } from './home/home.component';
 import { PetsComponent } from './pet-lovers/pets/pets.component';
+import { PetLoverPetsComponent } from './service-provider/pet-lover-pets/pet-lover-pets.component';
 import { RequestsComponent } from './service-provider/requests/requests.component';
 
 const routes: Routes = [
@@ -28,6 +29,10 @@ const routes: Routes = [
       {
         path: 'requests',
         component: RequestsComponent,
+      },
+      {
+        path: 'pets/:PetLoverId',
+        component: PetLoverPetsComponent,
       },
     ],
   },

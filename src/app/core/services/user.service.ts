@@ -265,4 +265,19 @@ export class UserService {
   uploadPicture(params: any): Observable<any> {
     return this.apiService.postFd('/api/UserProfile/Picture/Upload', params);
   }
+
+  // add comment...
+  addComment(params: any): Observable<any> {
+    return this.apiService.post('/api/PetComment/Add', params);
+  }
+
+  // get comment...
+  getComment(PetId: string, ServiceProviderId: string): Observable<any> {
+    return this.apiService.get(
+      '/api/PetComment/Get?PetId=' +
+        PetId +
+        '&ServiceProviderId=' +
+        ServiceProviderId
+    );
+  }
 }

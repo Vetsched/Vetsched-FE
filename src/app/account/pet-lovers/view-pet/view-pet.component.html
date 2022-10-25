@@ -101,33 +101,23 @@
           <div class="commentArea">
             <h2>Comments</h2>
             <div class="listingDesing">
-              <div class="listItem">
+              <div class="listItem" *ngFor="let comment of comments">
                 <div class="userImgName">
                   <div class="profileImg">
-                    <img src="assets/images/profileImg.png" alt="" />
+                    <img
+                      src="assets/images/profileImg.png"
+                      [alt]="
+                        comment.ServiceProvider && comment.ServiceProvider.name
+                      "
+                    />
                   </div>
                   <div class="comment">
-                    <p class="mb-0">Kay Swanson</p>
-                    <span
-                      >Lorem ipsum dolor sit amet, consecteturadipiscing elit.
-                      Nunc hendrerit sed consectetur arcu diam in ac interdum
-                      pellentesque. Aliquam at justo mauris.</span
-                    >
-                  </div>
-                </div>
-              </div>
-              <div class="listItem">
-                <div class="userImgName">
-                  <div class="profileImg">
-                    <img src="assets/images/profileImg.png" alt="" />
-                  </div>
-                  <div class="comment">
-                    <p class="mb-0">Kay Swanson</p>
-                    <span
-                      >Lorem ipsum dolor sit amet, consecteturadipiscing elit.
-                      Nunc hendrerit sed consectetur arcu diam in ac interdum
-                      pellentesque. Aliquam at justo mauris.</span
-                    >
+                    <p class="mb-0">
+                      {{
+                        comment.ServiceProvider && comment.ServiceProvider.name
+                      }}
+                    </p>
+                    <span>{{ comment.Comment }}</span>
                   </div>
                 </div>
               </div>
