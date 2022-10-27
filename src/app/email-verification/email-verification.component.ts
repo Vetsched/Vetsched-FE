@@ -20,8 +20,14 @@ export class EmailVerificationComponent implements OnInit {
         this.service
           .verifyEmail(params['Email'], params['EmailToken'])
           .subscribe((x: any) => {
-            if (x) {
+            if (x.statusCode == 200) {
               this.service.addToast('success', 'Email Verified successfully!');
+              this.router.navigate(['/login']);
+            } else {
+              this.service.addToast(
+                'error',
+                x.statusMessage || 'No Verification Token!'
+              );
               this.router.navigate(['/login']);
             }
           });
