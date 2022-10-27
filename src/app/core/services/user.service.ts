@@ -147,8 +147,11 @@ export class UserService {
   }
 
   // verify email...
-  verifyEmail(code: string): Observable<any> {
-    return this.apiService.post('/Identity/VerifyEmail', { code });
+  verifyEmail(email: string, emailToken: string): Observable<any> {
+    return this.apiService.post('/Identity/ConfirmEmail', {
+      email,
+      emailToken,
+    });
   }
 
   // get all services...

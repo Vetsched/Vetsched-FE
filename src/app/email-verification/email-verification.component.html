@@ -1,0 +1,35 @@
+<section class="loginArea">
+  <div class="container">
+    <div class="loginHeader hideXs">
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-6">
+          <a [routerLink]="['/']">
+            <img src="assets/images/logo.png" alt="" />
+          </a>
+        </div>
+        <div class="col-12 col-sm-6 col-md-6 text-right">
+          <a class="myBtn" [routerLink]="['/login']">Login</a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <form class="formDesing">
+          <div class="text-center">
+            <h2>Email Verification</h2>
+            <p>We are verifying your email address</p>
+            <br>
+            <i class="fa fa-spin fa-spinner fa-2x"></i>
+          </div>
+        </form>
+      </div>
+      <div class="col-12 col-md-6 hideSm">
+        <img
+          class="loginIllustration"
+          src="assets/images/loginIllustration.png"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
+</section>

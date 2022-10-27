@@ -18,7 +18,11 @@ export class SignUpComponent implements OnInit {
   currentUser: any = {};
   providerServices: any = [];
   noOfPets: number = 0;
-  constructor(private fb: FormBuilder, private service: UserService, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private service: UserService,
+    private router: Router
+  ) {
     this.signUpForm = this.fb.group({
       name: ['', Validators.required],
       profileType: ['', Validators.required],
@@ -84,18 +88,48 @@ export class SignUpComponent implements OnInit {
   verifyEmail(): void {
     this.currentTab = 'service';
     return;
-    if (
-      this.emailVerificationCode !== null &&
-      this.emailVerificationCode !== ''
-    ) {
-      const btn: any = document.getElementById('verifyEmailBtn');
+    // if (
+    //   this.emailVerificationCode !== null &&
+    //   this.emailVerificationCode !== ''
+    // ) {
+    //   const btn: any = document.getElementById('verifyEmailBtn');
+    //   btn.disabled = true;
+    //   this.service
+    //     .verifyEmail(this.emailVerificationCode)
+    //     .subscribe((response) => {
+    //       if (response.success === 200) {
+    //         this.currentTab = 'service';
+    //         this.service.addToast('success', 'Email verified successfully', '');
+    //       } else {
+    //         btn.disabled = false;
+    //         this.service.addToast(
+    //           'error',
+    //           response.statusMessage ||
+    //             'Something went wrong, please try again',
+    //           ''
+    //         );
+    //       }
+    //     });
+    // } else {
+    //   return;
+    // }
+  }
+  saveNoOfPets(): void {
+    if (this.noOfPets > 0) {
+      const btn: any = document.getElementById('noOfPets');
       btn.disabled = true;
       this.service
-        .verifyEmail(this.emailVerificationCode)
+        .saveNoOfPets(this.noOfPets, this.currentUser.profileId)
         .subscribe((response) => {
-          if (response.success === 200) {
-            this.currentTab = 'service';
-            this.service.addToast('success', 'Email verified successfully', '');
+          if (response === true) {
+            // this.currentTab = 'payment';
+            this.service.addToast(
+              'success',
+              'Please verify your email address',
+              ''
+            );
+            this.service.purgeAuth();
+            this.router.navigateByUrl('/login');
           } else {
             btn.disabled = false;
             this.service.addToast(
@@ -106,28 +140,6 @@ export class SignUpComponent implements OnInit {
             );
           }
         });
-    } else {
-      return;
-    }
-  }
-  saveNoOfPets(): void {
-    if (this.noOfPets > 0) {
-      const btn: any = document.getElementById('noOfPets');
-      btn.disabled = true;
-      this.service.saveNoOfPets(this.noOfPets, this.currentUser.profileId).subscribe((response) => {
-        if (response === true) {
-          // this.currentTab = 'payment';
-          this.service.addToast('success', 'No of pets saved successfully', '');
-          this.router.navigateByUrl('/account');
-        } else {
-          btn.disabled = false;
-          this.service.addToast(
-            'error',
-            response.statusMessage || 'Something went wrong, please try again',
-            ''
-          );
-        }
-      });
     } else {
       return;
     }
@@ -143,10 +155,11 @@ export class SignUpComponent implements OnInit {
             // this.currentTab = 'payment';
             this.service.addToast(
               'success',
-              'Provider Services saved successfully',
+              'Please verify your email address',
               ''
             );
-            this.router.navigateByUrl('/account');
+            this.service.purgeAuth();
+            this.router.navigateByUrl('/login');
           } else {
             btn.disabled = false;
             this.service.addToast(

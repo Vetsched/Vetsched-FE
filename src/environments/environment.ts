@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  api_url: 'http://localhost:11504',
   APP_ID: "223580d7f529d8ea",
   REGION: "us",
-  AUTH_KEY: "b9dd1cde5160f8bc3545aab3458361432cac0f53"
+  AUTH_KEY: "b9dd1cde5160f8bc3545aab3458361432cac0f53",
+  api_url: 'https://localhost:7006'
 };
 
 /*
