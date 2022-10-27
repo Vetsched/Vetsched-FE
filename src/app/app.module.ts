@@ -7,10 +7,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserService } from './core';
 import { CoreModule } from './core/core.module';
+import { EmailVerificationComponent } from './email-verification/email-verification.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EmailVerificationComponent
   ],
   imports: [
     BrowserModule,
