@@ -23,7 +23,7 @@ import { ServicesModalComponent } from './services-modal/services-modal.componen
 import { SendRequestComponent } from './add-service-provider/send-request/send-request.component';
 import { PetLoverPetsComponent } from './service-provider/pet-lover-pets/pet-lover-pets.component';
 import { ChatComponent } from './chat/chat.component';
-import { CometChatUI } from '../../cometchat-pro-angular-ui-kit/CometChatWorkspace/src/components/CometChatUI/CometChat-Ui/cometchat-ui.module';
+import { CometChatUI } from '../../cometchat-pro-angular-ui-kit/src/components/CometChatUI/CometChat-Ui/cometchat-ui.module';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
