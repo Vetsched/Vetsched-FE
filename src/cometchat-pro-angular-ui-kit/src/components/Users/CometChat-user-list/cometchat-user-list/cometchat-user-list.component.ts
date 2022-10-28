@@ -252,6 +252,7 @@ export class CometChatUserListComponent
    * @param Any userToEmit
    */
   onUserClicked(userToEmit: object) {
+    console.log('userClicked', userToEmit);
     try {
       this.onUserClick.emit(userToEmit);
     } catch (error) {

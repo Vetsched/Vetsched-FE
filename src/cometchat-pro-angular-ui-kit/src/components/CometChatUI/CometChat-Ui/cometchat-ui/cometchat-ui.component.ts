@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, Output, EventEmitter, ViewChild } from "@angular/core";
+import { Component, OnInit, HostListener, Output, EventEmitter, ViewChild, Input } from "@angular/core";
 import { CometChatManager } from "../../../../utils/controller";
 import * as enums from "../../../../utils/enums";
 import { CometChat } from "@cometchat-pro/chat";
@@ -37,6 +37,7 @@ import { CometChatService } from "../../../../utils/cometchat.service";
 })
 export class CometChatUIComponent implements OnInit {
   // emit listener for direct call
+  @Input() userId:string = '';
   item: any = null;
   curentItem: any;
   type: string = '';
@@ -455,6 +456,7 @@ export class CometChatUIComponent implements OnInit {
    * Sets the item information with the item that was clicked from userList , conversationList or groupList
    */
   userClicked(user: any) {
+    console.log(user, "----- user")
     try {
       if (this.checkAnimatedState !== null) {
         this.checkAnimatedState == "normal"

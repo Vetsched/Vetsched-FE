@@ -133,6 +133,7 @@ export class CometChatNavBarComponent implements OnInit,OnChanges {
    * @param Event user
    */
   userClicked(user: any) {
+    console.log("userClicked", user);
     try {
       if (user.hasOwnProperty(enums.CONVERSATION_WITH)) {
         this.item = user.conversationWith;

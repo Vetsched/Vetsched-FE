@@ -22,9 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServicesModalComponent } from './services-modal/services-modal.component';
 import { SendRequestComponent } from './add-service-provider/send-request/send-request.component';
 import { PetLoverPetsComponent } from './service-provider/pet-lover-pets/pet-lover-pets.component';
-import { ChatComponent } from './chat/chat.component';
-import { CometChatUI } from '../../cometchat-pro-angular-ui-kit/src/components/CometChatUI/CometChat-Ui/cometchat-ui.module';
-import { SharedModule } from '../shared/shared.module';
+import { CommonModule } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -48,11 +47,9 @@ import { SharedModule } from '../shared/shared.module';
     ServicesModalComponent,
     SendRequestComponent,
     PetLoverPetsComponent,
-    ChatComponent,
   ],
   imports: [
-    SharedModule,
-    CometChatUI,
+    CommonModule,
     AccountRoutingModule,
     FormsModule,
     ReactiveFormsModule,

@@ -37,7 +37,11 @@
       </a>
 
       <div *ngIf="!sendRequest" class="text-right">
-        <a class="myBtn btnSm" href="javascript:void(0)">Message</a>
+        <a
+          class="myBtn btnSm"
+          [routerLink]="['/account', 'chat', serviceProvider.id]"
+          >Message</a
+        >
         <a
           class="myBtn btnSm text-light"
           data-toggle="modal"
