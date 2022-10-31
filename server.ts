@@ -6,6 +6,7 @@ import * as express from 'express';
 import { existsSync } from 'fs';
 
 import { join } from 'path';
+import 'localstorage-polyfill';
 
 
 const domino = require('domino');
