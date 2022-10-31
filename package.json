@@ -33,6 +33,8 @@
     "domino": "^2.1.6",
     "express": "^4.15.2",
     "jquery": "^3.6.1",
+    "localstorage-polyfill": "^1.0.1",
+    "mock-browser": "^0.92.14",
     "mongodb": "^4.11.0",
     "ngx-toastr": "^15.0.0",
     "rxjs": "~7.5.0",

@@ -12,22 +12,33 @@ const domino = require('domino');
 const fs = require('fs');
 const path = require('path');
 
+import 'localstorage-polyfill';
+
+
+
 import { AppServerModule } from './src/main.server';
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
+  global['localStorage'] = localStorage;
   const server = express();
   const distFolder = join(process.cwd(), 'dist/vetsched/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
 
 
-
-
   const template = fs.readFileSync(path.join(process.cwd(), '.', 'dist/vetsched/browser', 'index.html')).toString();
+  // const template = fs.readFileSync(path.join(__dirname, join(distFolder, '/index.html'))).toString();
   const win = domino.createWindow(template);
   global['window'] = win;
   global['document'] = win.document;
-  global['localStorage'] = localStorage;
+  // global['localStorage'] = localStorage;
+
+  // const MockBrowser = require('mock-browser').mocks.MockBrowser;
+  // const mock = new MockBrowser();
+
+  // global['document'] = mock.getDocument();
+  // global['window'] = mock.getWindow();
+
 
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/main/modules/express-engine)
   server.engine('html', ngExpressEngine({
