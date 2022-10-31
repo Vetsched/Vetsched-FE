@@ -8,18 +8,20 @@ import {
   EventEmitter,
   ChangeDetectorRef,
   SimpleChanges,
-} from "@angular/core";
-import { CometChat } from "@cometchat-pro/chat";
-import { COMETCHAT_CONSTANTS } from "../../../../utils/messageConstants";
-import * as enums from "../../../../utils/enums";
-import { logger } from "../../../../utils/common";
+} from '@angular/core';
+import { CometChat } from '@cometchat-pro/chat';
+import { COMETCHAT_CONSTANTS } from '../../../../utils/messageConstants';
+import * as enums from '../../../../utils/enums';
+import { logger } from '../../../../utils/common';
 @Component({
-  selector: "cometchat-user-list",
-  templateUrl: "./cometchat-user-list.component.html",
-  styleUrls: ["./cometchat-user-list.component.css"],
+  selector: 'cometchat-user-list',
+  templateUrl: './cometchat-user-list.component.html',
+  styleUrls: ['./cometchat-user-list.component.css'],
 })
 export class CometChatUserListComponent
-  implements OnInit, OnDestroy, OnChanges {
+  implements OnInit, OnDestroy, OnChanges
+{
+  @Input() userId: string = '';
   @Input() friendsOnly = false;
   @Input() hasActions = false;
   @Input() item = null;
@@ -39,14 +41,12 @@ export class CometChatUserListComponent
   usersRequest: any;
   timeout: any;
   defaultAvatarImage =
-    "https://data-eu.cometchat.io/assets/images/avatars/spiderman.png";
+    'https://data-eu.cometchat.io/assets/images/avatars/spiderman.png';
 
   USERS: String = COMETCHAT_CONSTANTS.USERS;
   SEARCH: String = COMETCHAT_CONSTANTS.SEARCH;
 
-  constructor(private ref: ChangeDetectorRef) {
-   
-  }
+  constructor(private ref: ChangeDetectorRef) {}
 
   ngOnChanges(change: SimpleChanges) {
     try {
@@ -90,7 +90,7 @@ export class CometChatUserListComponent
           this.fetchNextContactList();
         },
         (error) => {
-          logger("error getting details:", { error });
+          logger('error getting details:', { error });
         }
       );
 
@@ -115,19 +115,16 @@ export class CometChatUserListComponent
         new CometChat.MessageListener({
           onTextMessageReceived: (textMessage: any) => {
             // this.messageUpdated(enums.TEXT_MESSAGE_RECEIVED, textMessage);
-    
           },
           onCustomMessageReceived: (customMessage: any) => {
-            if(customMessage.type == enums.CALL_TYPE_DIRECT){
-          
+            if (customMessage.type == enums.CALL_TYPE_DIRECT) {
               this.actionGenerated.emit({
-                type:enums.CALL_TYPE_DIRECT,
-                payLoad:customMessage
-              })
+                type: enums.CALL_TYPE_DIRECT,
+                payLoad: customMessage,
+              });
             }
             // this.messageUpdated(enums.CUSTOM_MESSAGE_RECEIVED, customMessage);
           },
-       
         })
       );
     } catch (error) {
@@ -171,7 +168,7 @@ export class CometChatUserListComponent
           .friendsOnly(this.friendsOnly)
           .setSearchKeyword(searchKey)
           .setLimit(30)
-          
+
           .build();
 
         this.fetchNextContactList();
@@ -211,11 +208,15 @@ export class CometChatUserListComponent
           } else {
             this.userSearches = false;
             this.usersList = [...this.usersList, ...userList];
+            const find = this.usersList.find((user:any) => user.uid === this.userId);
+            if (find) {
+              this.onUserClicked(find);
+            }
             this.loader = false;
           }
         },
         (error: any) => {
-          logger("User list fetching failed with error:", error);
+          logger('User list fetching failed with error:', error);
         }
       );
     } catch (error) {
@@ -236,7 +237,7 @@ export class CometChatUserListComponent
 
       //if found in the list, update user object
       if (userKey > -1) {
-        let userObj = { ...userlist[userKey] as {} };
+        let userObj = { ...(userlist[userKey] as {}) };
         let newUserObj = { ...userObj, ...user };
         userlist.splice(userKey, 1, newUserObj);
 

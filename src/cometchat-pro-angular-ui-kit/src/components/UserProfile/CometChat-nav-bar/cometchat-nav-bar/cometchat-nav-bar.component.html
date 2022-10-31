@@ -21,6 +21,7 @@
 
   <div *ngIf="displayUserList" class="listDisplayStyle">
     <cometchat-user-list
+      [userId]="userId"
       [item]="curentItem"
       (onUserClick)="userClicked($event)"
       (actionGenerated)="actionHandler($event)"

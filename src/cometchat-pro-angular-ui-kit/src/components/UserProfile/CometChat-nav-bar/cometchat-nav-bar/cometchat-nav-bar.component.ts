@@ -1,16 +1,25 @@
-import { Component, OnInit, Output, EventEmitter, Input, SimpleChanges, OnChanges } from "@angular/core";
-import * as enums from "../../../../utils/enums";
-import { COMETCHAT_CONSTANTS } from "../../../../utils/messageConstants";
-import { logger } from "../../../../utils/common";
-import { CometChat } from "@cometchat-pro/chat";
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  Input,
+  SimpleChanges,
+  OnChanges,
+} from '@angular/core';
+import * as enums from '../../../../utils/enums';
+import { COMETCHAT_CONSTANTS } from '../../../../utils/messageConstants';
+import { logger } from '../../../../utils/common';
+import { CometChat } from '@cometchat-pro/chat';
 @Component({
-  selector: "cometchat-nav-bar",
-  templateUrl: "./cometchat-nav-bar.component.html",
-  styleUrls: ["./cometchat-nav-bar.component.css"],
+  selector: 'cometchat-nav-bar',
+  templateUrl: './cometchat-nav-bar.component.html',
+  styleUrls: ['./cometchat-nav-bar.component.css'],
 })
-export class CometChatNavBarComponent implements OnInit,OnChanges {
+export class CometChatNavBarComponent implements OnInit, OnChanges {
   @Input() item: any = null;
   @Input() type: string = '';
+  @Input() userId: string = '';
   @Input() lastMessage: any;
   @Input() enableSelectedGroupStyling = false;
   @Input() groupToUpdate: object = {};
@@ -29,16 +38,14 @@ export class CometChatNavBarComponent implements OnInit,OnChanges {
   constructor() {}
 
   ngOnInit() {}
-  ngOnChanges(changes: SimpleChanges){
-
- 
-    if(changes[enums.ITEM]){
-      this.curentItem = Object.assign({}, this.item)
+  ngOnChanges(changes: SimpleChanges) {
+    this.openUserList();
+    if (changes[enums.ITEM]) {
+      this.curentItem = Object.assign({}, this.item);
     }
-    if(changes[enums.LAST_MESSAGE]){
-      this.lastMessage = changes[enums.LAST_MESSAGE].currentValue
+    if (changes[enums.LAST_MESSAGE]) {
+      this.lastMessage = changes[enums.LAST_MESSAGE].currentValue;
     }
-    
   }
 
   /**
@@ -92,15 +99,13 @@ export class CometChatNavBarComponent implements OnInit,OnChanges {
       logger(error);
     }
   }
-  actionHandler(action:any){
-    if(action.type == enums.CALL_TYPE_DIRECT){
+  actionHandler(action: any) {
+    if (action.type == enums.CALL_TYPE_DIRECT) {
       this.actionGenerated.emit({
-        type:enums.INCOMING_DIRECT_CALL,
-        payLoad:action.payLoad
-      })
-     
+        type: enums.INCOMING_DIRECT_CALL,
+        payLoad: action.payLoad,
+      });
     }
-
   }
 
   /**
@@ -133,7 +138,7 @@ export class CometChatNavBarComponent implements OnInit,OnChanges {
    * @param Event user
    */
   userClicked(user: any) {
-    console.log("userClicked", user);
+    console.log('userClicked', user);
     try {
       if (user.hasOwnProperty(enums.CONVERSATION_WITH)) {
         this.item = user.conversationWith;

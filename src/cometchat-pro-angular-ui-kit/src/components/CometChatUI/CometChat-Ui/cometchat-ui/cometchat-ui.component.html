@@ -1,6 +1,7 @@
 <div class="unifiedStyle">
   <div class="unifiedSidebarStyle" [@FadeInFadeOut]="checkAnimatedState" hidden>
     <cometchat-nav-bar
+      [userId]="userId"
       [item]="item"
       [type]="type"
       [groupToUpdate]="groupToUpdate"
