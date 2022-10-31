@@ -1,18 +1,33 @@
 import 'zone.js/dist/zone-node';
 
-import {APP_BASE_HREF} from '@angular/common';
-import {ngExpressEngine} from '@nguniversal/express-engine';
+import { APP_BASE_HREF } from '@angular/common';
+import { ngExpressEngine } from '@nguniversal/express-engine';
 import * as express from 'express';
-import {existsSync} from 'fs';
-import {join} from 'path';
+import { existsSync } from 'fs';
 
-import {AppServerModule} from './src/main.server';
+import { join } from 'path';
+
+
+const domino = require('domino');
+const fs = require('fs');
+const path = require('path');
+
+import { AppServerModule } from './src/main.server';
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express();
   const distFolder = join(process.cwd(), 'dist/vetsched/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
+
+
+
+
+  const template = fs.readFileSync(path.join(process.cwd(), '.', 'dist/vetsched/browser', 'index.html')).toString();
+  const win = domino.createWindow(template);
+  global['window'] = win;
+  global['document'] = win.document;
+  global['localStorage'] = localStorage;
 
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/main/modules/express-engine)
   server.engine('html', ngExpressEngine({
