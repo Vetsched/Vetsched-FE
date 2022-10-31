@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { ToastrModule } from 'ngx-toastr';
+import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserService } from './core';
@@ -12,6 +13,7 @@ import { EmailVerificationComponent } from './email-verification/email-verificat
     EmailVerificationComponent
   ],
   imports: [
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     SharedModule,
     CoreModule,
@@ -22,4 +24,4 @@ import { EmailVerificationComponent } from './email-verification/email-verificat
   providers: [UserService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
