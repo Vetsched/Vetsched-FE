@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path: '',
     component: AccountComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -29,6 +29,11 @@ const routes: Routes = [
       {
         path: 'requests',
         component: RequestsComponent,
+      },
+      {
+        path: 'chat/:userId',
+        loadChildren: () =>
+          import('./chat/chat.module').then((m) => m.ChatModule),
       },
       {
         path: 'pets/:PetLoverId',

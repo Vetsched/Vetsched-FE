@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { AccountRoutingModule } from './account-routing.module';
 import { AccountComponent } from './account.component';
@@ -23,6 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServicesModalComponent } from './services-modal/services-modal.component';
 import { SendRequestComponent } from './add-service-provider/send-request/send-request.component';
 import { PetLoverPetsComponent } from './service-provider/pet-lover-pets/pet-lover-pets.component';
+import { CommonModule } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -47,8 +48,11 @@ import { PetLoverPetsComponent } from './service-provider/pet-lover-pets/pet-lov
     SendRequestComponent,
     PetLoverPetsComponent,
   ],
-  imports: [CommonModule, AccountRoutingModule, 
+  imports: [
+    CommonModule,
+    AccountRoutingModule,
     FormsModule,
-    ReactiveFormsModule],
+    ReactiveFormsModule,
+  ],
 })
 export class AccountModule {}
