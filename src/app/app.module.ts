@@ -7,6 +7,8 @@ import { UserService } from './core';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { EmailVerificationComponent } from './email-verification/email-verification.component';
+
+import * as $ from 'jquery';
 @NgModule({
   declarations: [
     AppComponent,
