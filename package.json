@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "dev:ssr": "ng run vetsched:serve-ssr",
-    "serve:ssr": "node dist/vetsched/server/main.js",
+    "serve:ssr": "node dist/server/main.js",
     "build:ssr": "ng build && ng run vetsched:server",
     "prerender": "ng run vetsched:prerender"
   },

@@ -36,7 +36,7 @@ jobs:
           branch=${GITHUB_REF##*/}
 
           echo ::set-output name=branchName::$branch
-           
+
           if [ "$branch" == "${{ env.MainBranch }}" ]
           then
               echo "::set-output name=versionBump::minor"
@@ -108,7 +108,7 @@ jobs:
           RELEASE_BRANCHES: .*
           WITH_V: false
       - run: echo "New version is ${{ steps.versionBump.outputs.new_tag }}"
-      
+
       # webhook to LowCodeUnit
       - name: Invoke deployment hook
         uses: fathym/workflow-webhook@v2
