@@ -40,6 +40,7 @@ export class ServicesModalComponent implements OnInit {
         .saveProviderServices(this.providerServices, this.currentUser.profileId)
         .subscribe((response) => {
           if (response === true) {
+            $('#servicesModal').modal('hide');
             // this.currentTab = 'payment';
             this.service.addToast(
               'success',

@@ -8,6 +8,8 @@ export const environment = {
   REGION: "us",
   AUTH_KEY: "b9dd1cde5160f8bc3545aab3458361432cac0f53",
   api_url: 'https://vetschedapi.herokuapp.com',
+  // api_url: 'https://localhost:7006',
+
 };
 
 /*

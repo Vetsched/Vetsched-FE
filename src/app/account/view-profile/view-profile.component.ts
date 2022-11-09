@@ -40,6 +40,7 @@ export class ViewProfileComponent implements OnInit {
       .updateProfile({ ...this.profileForm.value, id: this.currentUser.id })
       .subscribe((x: any) => {
         if (x) {
+          $('#userProfile').modal('hide');
           this.service.addToast('success', 'Profile updated successfully');
         } else {
           this.service.addToast('error', 'Some thing went wrong!');
