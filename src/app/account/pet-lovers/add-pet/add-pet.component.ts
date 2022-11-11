@@ -19,6 +19,7 @@ export class AddPetComponent implements OnInit, OnChanges {
   currentUser: any = {};
   form: FormGroup;
   @Input() pet: any = {};
+  @Input() reset: boolean = false;
   @Output() success = new EventEmitter();
   constructor(private service: UserService, private fb: FormBuilder) {
     this.form = this.fb.group({
@@ -41,6 +42,9 @@ export class AddPetComponent implements OnInit, OnChanges {
   }
   ngOnChanges(changes: SimpleChanges): void {
     this.ngOnInit();
+    if (this.pet == null) {
+      this.resetForm();
+    }
   }
   ngOnInit(): void {
     if (this.pet !== null) {
@@ -72,6 +76,25 @@ export class AddPetComponent implements OnInit, OnChanges {
       if (x.token !== null) {
         this.currentUser = x;
       }
+    });
+  }
+  resetForm(): void {
+    this.form.patchValue({
+      name: '',
+      title: 0,
+      breed: '',
+      sepcies: '',
+      age: '',
+      sex: '',
+      microchiped: '',
+      vaccination: '',
+      allergies: '',
+      medications: '',
+      vaccineRecieved: '',
+      dueVaccine: '',
+      lastVistDescription: '',
+      previousMedical: '',
+      details: '',
     });
   }
   save(): void {
@@ -112,6 +135,7 @@ export class AddPetComponent implements OnInit, OnChanges {
             ''
           );
           this.success.emit(true);
+          this.resetForm();
           $('#addPet').modal('hide');
         } else {
           btn.disabled = false;

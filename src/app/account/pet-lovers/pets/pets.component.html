@@ -45,14 +45,10 @@
   </div>
 </div>
 <div class="addMoreWrapper">
-  <a
-    class="addMore text-light"
-    role="button"
-    data-toggle="modal"
-    data-target="#addPet"
-    >+</a
-  >
+  <a class="addMore text-light" role="button" (click)="addPet()">+</a>
 </div>
 
-<app-add-pet [pet]="pet" (success)="getPets()"></app-add-pet>
+<ng-container *ngIf="showPop">
+  <app-add-pet [pet]="pet" (success)="getPets()"></app-add-pet>
+</ng-container>
 <app-view-pet [pet]="pet" *ngIf="pet"></app-view-pet>

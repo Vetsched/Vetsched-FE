@@ -10,6 +10,7 @@ export class PetsComponent implements OnInit {
   pets: any = [];
   currentUser: any = {};
   pet: any = {};
+  showPop: boolean = false;
   constructor(private service: UserService) {}
 
   ngOnInit(): void {
@@ -31,6 +32,12 @@ export class PetsComponent implements OnInit {
   }
   editPet(pet: any): void {
     this.pet = pet;
+    this.showPop = true;
+    $('#addPet').modal('show');
+  }
+  addPet(): void {
+    this.pet = null;
+    this.showPop = true;
     $('#addPet').modal('show');
   }
 }

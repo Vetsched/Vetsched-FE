@@ -2,8 +2,10 @@
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content customModal">
       <div class="modal-header">
-        <h2 class="mainHeading">Add Pet</h2>
-        <button class="myBtn square" data-dismiss="modal">x</button>
+        <h2 class="mainHeading">{{ pet !== null ? "Edit" : "Add" }} Pet</h2>
+        <button class="myBtn square" data-dismiss="modal" (click)="resetForm()">
+          x
+        </button>
       </div>
       <div class="modal-body">
         <div class="formDesing" [formGroup]="form">

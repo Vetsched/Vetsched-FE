@@ -53,7 +53,20 @@ export class SignUpComponent implements OnInit {
       this.services = data;
     });
   }
+  validateEmail(email: string): any {
+    return email.match(
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+  }
+
   signup(): void {
+    if (
+      this.signUpForm.controls['email'].invalid ||
+      !this.validateEmail(this.signUpForm.controls['email'].value)
+    ) {
+      this.service.addToast('error', 'Please enter a valid email!', '');
+      return;
+    }
     if (this.signUpForm.invalid) {
       this.service.addToast('error', 'Please fill out all the fields!', '');
       return;
@@ -79,7 +92,7 @@ export class SignUpComponent implements OnInit {
       }
     });
   }
-  signUpWithCometChat(data:any): void {
+  signUpWithCometChat(data: any): void {
     const authKey = environment.AUTH_KEY;
     const user = new CometChat.User(data.id);
     user.setName(data.name);
