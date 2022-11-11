@@ -18,6 +18,8 @@ export class SignUpComponent implements OnInit {
   currentUser: any = {};
   providerServices: any = [];
   noOfPets: number = 0;
+  hide: boolean = true;
+  hideCnf: boolean = true;
   constructor(
     private fb: FormBuilder,
     private service: UserService,

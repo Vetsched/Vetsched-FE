@@ -36,10 +36,15 @@
               <a class="active" data-toggle="tab">Step 1</a>
             </li>
             <li class="nav-item">
-              <a [ngClass]="{'active' : currentTab === 'email' || currentTab === 'service'}">Step 2</a>
+              <a
+                [ngClass]="{
+                  active: currentTab === 'email' || currentTab === 'service'
+                }"
+                >Step 2</a
+              >
             </li>
             <li class="nav-item">
-              <a [ngClass]="{'active' : currentTab === 'service'}">Step 3</a>
+              <a [ngClass]="{ active: currentTab === 'service' }">Step 3</a>
             </li>
             <!-- <li class="nav-item">
               <a data-target="#Step4">Step 4</a>
@@ -125,7 +130,7 @@
             <label for="">Password</label>
             <input
               class="form-control"
-              type="password"
+              [type]="hide ? 'password' : 'text'"
               placeholder="Enter Password"
               formControlName="password"
               [ngClass]="{
@@ -135,12 +140,18 @@
                     signUpForm.controls['password'].touched)
               }"
             />
+            <i
+              class="fa"
+              [ngClass]="hide ? 'fa-eye-slash' : 'fa-eye'"
+              (click)="hide = !hide"
+              style="display: block; float: right; margin: -29px 10px"
+            ></i>
           </div>
           <div class="form-group formIcon">
             <label for="">Confirm Password</label>
             <input
               class="form-control"
-              type="password"
+              [type]="hideCnf ? 'password' : 'text'"
               placeholder="Enter Password"
               formControlName="confirmPassword"
               [ngClass]="{
@@ -150,6 +161,12 @@
                     signUpForm.controls['confirmPassword'].touched)
               }"
             />
+            <i
+              class="fa"
+              [ngClass]="hideCnf ? 'fa-eye-slash' : 'fa-eye'"
+              (click)="hideCnf = !hideCnf"
+              style="display: block; float: right; margin: -29px 10px"
+            ></i>
           </div>
           <br />
           <div class="text-center">
@@ -173,11 +190,18 @@
           <br /><br />
           <div class="form-group">
             <label for="">Code</label>
-            <input class="form-control" type="text" placeholder="Enter Code" [(ngModel)]="emailVerificationCode" />
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Enter Code"
+              [(ngModel)]="emailVerificationCode"
+            />
           </div>
           <br />
           <div class="text-center">
-            <a class="myBtn" (click)="verifyEmail()" id="verifyEmailBtn">Next</a>
+            <a class="myBtn" (click)="verifyEmail()" id="verifyEmailBtn"
+              >Next</a
+            >
           </div>
         </div>
       </div>
@@ -190,7 +214,11 @@
           <br /><br />
           <div class="form-group">
             <label for="">Services</label>
-            <select class="form-control" [(ngModel)]="providerServices" multiple>
+            <select
+              class="form-control"
+              [(ngModel)]="providerServices"
+              multiple
+            >
               <option [value]="service.id" *ngFor="let service of services">
                 {{ service.name }}
               </option>
@@ -198,7 +226,12 @@
           </div>
           <br />
           <div class="text-center">
-            <a class="myBtn" (click)="saveProviderServices()" id="providerServices">Next</a>
+            <a
+              class="myBtn"
+              (click)="saveProviderServices()"
+              id="providerServices"
+              >Next</a
+            >
           </div>
         </div>
         <div *ngIf="currentUser && currentUser.profileType === 1">
@@ -208,7 +241,14 @@
           <br /><br />
           <div class="form-group">
             <label for="">How many pets</label>
-            <input class="form-control" type="number" placeholder="No of Pets" [(ngModel)]="noOfPets" min="1" max="100" />
+            <input
+              class="form-control"
+              type="number"
+              placeholder="No of Pets"
+              [(ngModel)]="noOfPets"
+              min="1"
+              max="100"
+            />
           </div>
           <br />
           <div class="text-center">
