@@ -36,6 +36,7 @@
     "localstorage-polyfill": "^1.0.1",
     "mock-browser": "^0.92.14",
     "mongodb": "^4.11.0",
+    "ng-multiselect-dropdown": "^0.3.9",
     "ngx-toastr": "^15.0.0",
     "rxjs": "~7.5.0",
     "saslprep": "^1.0.0",

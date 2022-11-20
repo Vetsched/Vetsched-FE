@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../core';
 import { CometChat } from '@cometchat-pro/chat';
 import { environment } from 'src/environments/environment';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 
 @Component({
   selector: 'app-sign-up',
@@ -20,6 +21,15 @@ export class SignUpComponent implements OnInit {
   noOfPets: number = 0;
   hide: boolean = true;
   hideCnf: boolean = true;
+  dropdownSettings: IDropdownSettings = {
+    singleSelection: false,
+    idField: 'id',
+    textField: 'name',
+    selectAllText: 'Select All',
+    unSelectAllText: 'UnSelect All',
+    itemsShowLimit: 5,
+    allowSearchFilter: true,
+  };
   constructor(
     private fb: FormBuilder,
     private service: UserService,
@@ -164,7 +174,7 @@ export class SignUpComponent implements OnInit {
       const btn: any = document.getElementById('providerServices');
       btn.disabled = true;
       this.service
-        .saveProviderServices(this.providerServices, this.currentUser.profileId)
+        .saveProviderServices(this.providerServices.map((x:any) => x.id), this.currentUser.profileId)
         .subscribe((response) => {
           if (response === true) {
             // this.currentTab = 'payment';

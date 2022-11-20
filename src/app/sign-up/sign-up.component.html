@@ -214,15 +214,13 @@
           <br /><br />
           <div class="form-group">
             <label for="">Services</label>
-            <select
-              class="form-control"
+            <ng-multiselect-dropdown
+              [placeholder]="'Select Services'"
+              [settings]="dropdownSettings"
+              [data]="services"
               [(ngModel)]="providerServices"
-              multiple
             >
-              <option [value]="service.id" *ngFor="let service of services">
-                {{ service.name }}
-              </option>
-            </select>
+            </ng-multiselect-dropdown>
           </div>
           <br />
           <div class="text-center">
