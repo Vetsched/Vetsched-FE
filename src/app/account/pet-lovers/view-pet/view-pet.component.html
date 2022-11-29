@@ -11,8 +11,8 @@
           <div class="updateProfile text-center">
             <div class="profileImg">
               <img
-                [src]="pet.image"
-                (error)="pet.image = 'assets/images/user.png'"
+                [src]="pet.imageUri"
+                (error)="pet.imageUri = 'assets/images/user.png'"
                 [alt]="pet.name"
               />
             </div>
@@ -126,11 +126,12 @@
             <div class="sendArea">
               <input type="file" class="attachmentBtn" />
               <textarea
+                [(ngModel)]="comment"
                 type="text"
                 class="youMessage"
                 placeholder="Type Your message here..."
               ></textarea>
-              <button class="sendMsg">
+              <button class="sendMsg" (click)="addComment()">
                 <i class="fa fa-send"></i>
               </button>
             </div>

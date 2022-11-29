@@ -12,6 +12,11 @@
           <div>
             <div class="updateProfile">
               <div class="profileImg">
+                <img
+                  [src]="pet.imageUri"
+                  (error)="pet.imageUri = 'assets/images/user.png'"
+                  [alt]="pet.name"
+                />
                 <div class="customDropdown dropdown">
                   <button id="profilePic" data-toggle="dropdown">
                     <svg viewBox="0 0 12 12">
@@ -21,8 +26,18 @@
                   <div
                     class="dropdown-menu dropdown-menu-right"
                     aria-labelledby="profilePic"
+                    *ngIf="pet !== null"
                   >
-                    <a class="dropdown-item"> Upload Picture </a>
+                    <input
+                      id="uploadFile"
+                      type="file"
+                      accept="image/jpeg,image/jpg,image/png"
+                      hidden
+                      (change)="uploadFile($event)"
+                    />
+                    <a class="dropdown-item" (click)="upload()">
+                      Upload Picture
+                    </a>
                     <a class="dropdown-item"> Remove Picture </a>
                   </div>
                 </div>

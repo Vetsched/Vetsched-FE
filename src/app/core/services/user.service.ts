@@ -269,6 +269,11 @@ export class UserService {
     return this.apiService.postFd('/api/UserProfile/Picture/Upload', params);
   }
 
+  // upload pet picture...
+  uploadPetPicture(params: any): Observable<any> {
+    return this.apiService.postFd('/api/Pet/Picture/Upload', params);
+  }
+
   // add comment...
   addComment(params: any): Observable<any> {
     return this.apiService.post('/api/PetComment/Add', params);
