@@ -1,0 +1,28 @@
+{
+  "name": "vetsched-fe",
+  "version": "1.0.0",
+  "private": true,
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.6.",
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1",
+    "path": "^0.12.7"
+  },
+  "scripts": {
+    "start": "node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vetsched/Vetsched-FE.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vetsched/Vetsched-FE/issues"
+  },
+  "homepage": "https://github.com/Vetsched/Vetsched-FE#readme"
+}

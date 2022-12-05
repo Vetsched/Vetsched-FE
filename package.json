@@ -1,28 +1,66 @@
 {
-  "name": "vetsched-fe",
-  "version": "1.0.0",
-  "private": true,
-  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.6.",
-  "dependencies": {
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "http-errors": "~1.6.3",
-    "jade": "~1.11.0",
-    "morgan": "~1.9.1",
-    "path": "^0.12.7"
-  },
+  "name": "vetsched",
+  "version": "0.0.0",
   "scripts": {
-    "start": "node main.js"
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "dev:ssr": "ng run vetsched:serve-ssr",
+    "serve:ssr": "node dist/server/main.js",
+    "build:ssr": "ng build && ng run vetsched:server",
+    "prerender": "ng run vetsched:prerender"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Vetsched/Vetsched-FE.git"
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^14.2.8",
+    "@angular/common": "^14.2.8",
+    "@angular/compiler": "^14.2.8",
+    "@angular/core": "^14.2.8",
+    "@angular/fire": "^7.4.1",
+    "@angular/forms": "^14.2.8",
+    "@angular/platform-browser": "^14.2.8",
+    "@angular/platform-browser-dynamic": "^14.2.8",
+    "@angular/platform-server": "^14.0.0",
+    "@angular/router": "^14.2.8",
+    "@cometchat-pro/chat": "^3.0.6",
+    "@ctrl/ngx-emoji-mart": "^7.0.0",
+    "@nguniversal/express-engine": "^14.2.0",
+    "body-parser": "^1.20.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "domino": "^2.1.6",
+    "express": "^4.15.2",
+    "jquery": "^3.6.1",
+    "localstorage-polyfill": "^1.0.1",
+    "mock-browser": "^0.92.14",
+    "mongodb": "^4.11.0",
+    "ng-multiselect-dropdown": "^0.3.9",
+    "ngx-toastr": "^15.0.0",
+    "rxjs": "~7.5.0",
+    "saslprep": "^1.0.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.11.4"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Vetsched/Vetsched-FE/issues"
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^14.0.6",
+    "@angular/cli": "~14.0.6",
+    "@angular/compiler-cli": "^14.2.8",
+    "@nguniversal/builders": "^14.2.0",
+    "@types/express": "^4.17.0",
+    "@types/jasmine": "~4.0.0",
+    "@types/jquery": "^3.5.14",
+    "@types/node": "^14.15.0",
+    "jasmine-core": "~4.1.0",
+    "karma": "~6.3.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.0.0",
+    "karma-jasmine-html-reporter": "~1.7.0",
+    "typescript": "~4.7.2"
   },
-  "homepage": "https://github.com/Vetsched/Vetsched-FE#readme"
+  "engines": {
+    "node": "16.x"
+  }
 }
